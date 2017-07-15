@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12">
+  <h2>Classes and Seminars</h2>
+  </div>
+  <div class="row" style="padding-left:1em;padding-right:1em;">
+  <div class="column small-12 large-4 large-push-8" style="padding-bottom:1em;padding-top:1em;">
+    {{ partial "teach-aside" . }}
+  </div>
+  <div class="column small-12 large-8 large-pull-4">
+        {{ range .Data.Pages.GroupByDate "2006" }}
+        <div class="row">
+          <div class="column small-2">
+            <h3>{{ .Key }}</h3>
+          </div>
+          <div class="column small-10">
+            <ul class="fa-ul">
+              {{ range .Pages }}
+              <li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
+                  <a href="{{ .Permalink }}"><span class="caps">{{ .Title }}</span></a>
+                  <p>{{ .Summary }}</p>
+              </li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+</div>
+
+{{ end }}

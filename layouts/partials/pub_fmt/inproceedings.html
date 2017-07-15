@@ -1,0 +1,20 @@
+{{- $ := .dot -}}
+{{ partial "pub_fmt/article_title" . -}}
+{{ partial "pub_fmt/authors" . }}.
+{{- if isset $.Params "container_title" }}
+  in
+  {{ if isset $.Params "editor" -}}
+    {{ partial "pub_fmt/editors" . | chomp -}},
+  {{ end -}}
+  {{ partial "pub_fmt/container_title" . | chomp -}}
+  {{- if (isset $.Params "page") | and (not (eq $.Params.page "")) -}},
+  {{ $.Params.page -}}
+  {{- end }}
+  {{ partial "pub_fmt/publisher" . -}}
+{{- end -}}
+{{- if gt .doi 0 -}}
+{{- partial "pub_fmt/doi" . -}}
+{{- end -}}.
+{{- if gt .pdf 0 }}
+{{ partial "pub_fmt/pdf" . -}}
+{{- end }}

@@ -1,0 +1,14 @@
+{{ $ := .dot }}
+{{ $ai := .author_initials  }}
+{{ $ei := .editor_initials }}
+{{ $py := .bib_with_year }}
+{{ $pl := .pub_loc }}
+{{ $isbn := .isbn }}
+{{- if eq $.Params.pub_type "article-journal" }}{{ partial "pub_fmt/article" . -}}
+{{ $dot := (index $ )}}
+{{- else if eq $.Params.pub_type "book" }}{{ partial "pub_fmt/book" . -}}
+{{- else if eq $.Params.pub_type "chapter" }}{{ partial "pub_fmt/chapter" . -}}
+{{- else if eq $.Params.pub_type "paper-conference" }}{{ partial "pub_fmt/inproceedings" . -}}
+{{- else if eq $.Params.pub_type "patent" }}{{ partial "pub_fmt/patent" . -}}
+{{- else if eq $.Params.pub_type "report" }}{{ partial "pub_fmt/report" . -}}
+{{- end -}}

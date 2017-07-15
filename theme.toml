@@ -1,16 +1,34 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/spf13/hugoThemes#themetoml for an example
 
-name = "Finite"
+name = "Finisterre"
 license = "MIT"
-licenselink = "https://github.com/lambdafu.net/hugo-finite/blob/master/LICENSE.md"
+licenselink = "https://github.com/jonathan-g/hugo-finisterre/blob/master/LICENSE.md"
 description = "A simple academic theme."
-homepage = "https://github.com/lambdafu/hugo-finite"
-tags = ["academic", "basic"]
-features = ["posts", "publications", "social"]
-min_version = 0.15
+homepage = "https://github.com/jonathan-g/hugo-finisterre"
+tags = ["academic", "portfolio", "personal", "student", "faculty", "university",
+        "basic",
+        "foundation", "Google Analytics",
+        "Font awesome", "Academic icons"
+        ]
+features = ["academic profile",
+            "publications", "research publication system", "bibliography",
+            "projects",
+            "teaching",
+            "posts", "blog", "social",
+            "Google Analytics",
+            "Font awesome", "Academic icons",
+            "font-awesome", "academic-icons",
+            "fontawesome", "academicicons",
+            "contact"
+            ]
+min_version = 0.21
 
 [author]
-  name = "Marcus Brinkmann"
-  homepage = "https://lambdafu.net/"
+  name = "Jonathan Gilligan"
+  homepage = "https://www.jonathangilligan.org/"
 
+[original]
+  author = "Marcus Brinkmann"
+  homepage = "https:/lambdafu.net"
+  repo = "https://github.com/lambdafu/hugo-finite"

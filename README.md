@@ -1,15 +1,20 @@
-# Finite Theme for Hugo
+# Finisterre Theme for Hugo
 
-The design is inspired by consequently.org, which I found through
-kieranhealy.org.  It is also inspired by the acedemic theme for Hugo.
+This theme is adapted from the hugo-finite theme by Marcus Brinkmann,
+which was inspired by consequently.org, via kieranhealy.org, and also by
+the acedemic theme for Hugo.
 
-From consequently.org, this theme inherits the informationally dense
-layout.
+From consequently.org and kieranhealy.org, this theme inherits the
+informationally dense layout.
 
 From the academic theme, this theme inherits some configuration
 options and the social sharing buttons.
 
-Fresh to the mix is use of the Foundation framework from Zurb.
+The finite theme adds the Foundation framework from Zurb.
+
+I have added support for automatically generating publication lists similar
+to those at kieranhealy.org, from bibtex files (requires python and
+pandoc)
 
 Contributions welcome!
 
@@ -21,12 +26,10 @@ Contributions welcome!
 
 # License of third-parties
 
+* hugo-finite: MIT License
 * hugo-academic: MIT License
 * Highlight.js: MIT License
 * MathJax: Apache License 2.0
 * Foundation 6.2.3 by Zurb: MIT License
-* Font Awesome 4.6.3: SIL OFL 1.1 (font), MIT License (CSS)
-* Academicons 1.7.0: SIL OFL 1.1 (font), MIT License (CSS)
-* DejaVuSansMono: Bitstream Vera Fonts Coyright, Arev Fonts Copyright
-* Merriweather: SIL OFL 1.1
-* WorkSans: SIL OFL 1.1
+* Font Awesome 4.7.0: SIL OFL 1.1 (font), MIT License (CSS)
+* Academic Icons 1.8.0: SIL OFL 1.1 (font), MIT License (CSS)

@@ -1,0 +1,3 @@
+{{- $ := .dot -}}
+{{ $names := $.Params.short_author }}
+{{ partial "pub_fmt/et_al" (dict "names" $names "cutoff" 3 )}}

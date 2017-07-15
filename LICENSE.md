@@ -1,12 +1,12 @@
 This theme uses a lot of resources from third-parties.  The respective
 git submodules contain more information.
 
-The design is inspired by consequently.org, which I found through
-kieranhealy.org.  It is also inspired by the acedemic theme for hugo.
+The design is inspired by the finite theme for hugo, which was in turn 
+inpsired consequently.org, kieranhealy.org, and the acedemic theme for hugo.
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Marcus Brinkmann
+Copyright (c) 2017 Jonathan Gilligan
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

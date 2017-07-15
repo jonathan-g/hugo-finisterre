@@ -1,0 +1,7 @@
+{{- $ := .dot -}}
+{{ partial "pub_fmt/book_title" . | chomp -}}.
+{{ partial "pub_fmt/authors" . | chomp -}}.
+{{ partial "pub_fmt/publisher" . | chomp -}}.
+{{- if gt .pdf 0 }}
+{{ partial "pub_fmt/pdf" . -}}
+{{- end }}

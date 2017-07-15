@@ -1,39 +1,48 @@
 <footer class="whatisthis">
   <hr />
+  <div class="wrapper" style="font-size:0.9em; line-height:1.05em;">
   <div class="row">
-    <div class="column small-12 medium-4">
-      <h1>About</h1>
-      <figure class="full-figure">
-	<img src="/img/portrait.jpg" alt="Portrait of the author">
-	{{ if index .Site.Params "bio_full" }}<figcaption>{{ .Site.Params.bio_full }}</figcaption>{{ end }}
-      </figure>
+    <div class="column small-12 medium-5">
+      <h3>About</h3>
+        <figure class="image-left">
+  	     <img class="avatar" src="/img/
+         {{- if $.Site.Params.avatar -}}
+           {{ $.Site.Params.avatar -}}
+         {{- else -}}
+           avatar.jpg
+         {{- end -}}" alt="Portrait of the author"/>
+        </figure>
+        <p>
+        {{ template "site_templates/about_me.html" }}
+        </p>
     </div>
     <div class="column small-12 medium-4">
-      {{ if isset .Site.Params "education" }}
-      <h1>Education</h1>
-      <ul class="ul-edu fa-ul">
-	{{ range $.Site.Params.education }}
-	<li><i class="fa-li fa fa-graduation-cap"></i>
-          {{ .course }}, {{ .year }} ({{ .institution }})
-        </li>
-        {{ end }}
-      </ul>
-      {{ end }}
-      <h1 id="contact">Contact</h1>
+      <h3 id="contact">Contact</h3>
       <ul class="fa-ul">
+  <li><i class="fa-li fa fa-university" style="padding-top:3px;"></i>
+  {{ range $.Site.Params.address }}
+    {{ . | safeHTML }}
+  {{ end }}
+  </li>
 	{{ range $.Site.Params.social }}
-	<li><i class="fa-li {{ .icon_pack }} {{ .icon_pack}}-{{ .icon }}" style="padding-top:3px;"></i><a href="{{ .link }}">{{ .text }}</a>{{ if .site}} on {{ .site }}{{ end }}</li>
+	<li>
+  {{- if .icon -}}
+  <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
+  {{- end -}}
+  {{- if .site -}}{{.site}} {{ end -}}
+  <a href="{{ .link }}">{{ .text }}</a>
+  {{ if .on_site }} on {{ .on_site }}{{ end }}
+  </li>
 	{{ end }}
       </ul>
-      {{ partial "contact" . }}
     </div>
-    <div class="column small-12 medium-4">
-      <h1>Subscribe</h1>
+    <div class="column small-12 medium-3">
+      <h3>Subscribe</h3>
       <p>To receive updates, you can subscribe to
 	the <a href="/index.xml"><i class="fa fa-rss-square"></i>&nbsp;RSS feed</a> of all
 	updates to the site in an RSS feed reader.
       </p>
-      <h1>Search</h1>
+      <h3>Search</h3>
       <a id="searchsite">
 	<form method="get" action="https://duckduckgo.com/">
 	  <label for="search-field" class="show-for-sr">Search with DuckDuckGo</label>
@@ -49,5 +58,6 @@
 	</form>
       </a>
     </div>
+  </div>
   </div>
 </footer>

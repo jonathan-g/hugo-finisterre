@@ -1,0 +1,10 @@
+{{- $raw_names := .names -}}
+{{- $cutoff := .cutoff -}}
+{{- $names := apply (apply $raw_names "partial" "pub_fmt/author" ".") "chomp" "." -}}
+{{- if gt (len $names) $cutoff -}}
+{{- index $names 0 }} <i>et al</i>.
+{{- else if gt (len $names) 2 -}}
+{{- delimit $names ", " ", &amp; " -}}
+{{- else -}}
+{{- delimit $names " &amp; " -}}
+{{- end -}}

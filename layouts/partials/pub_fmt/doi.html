@@ -1,0 +1,5 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "doi" }}
+{{ if false -}}<i class="ai ai-doi"></i> {{ end -}}
+doi:&nbsp;<a href="https://doi.org/{{ $.Params.doi | safeHTML }}" target="blank_">{{ $.Params.doi }}</a>
+{{- end -}}

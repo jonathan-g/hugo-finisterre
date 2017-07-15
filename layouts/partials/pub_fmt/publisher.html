@@ -1,0 +1,14 @@
+{{- $ := .dot -}}
+{{- $pl := .pub_loc -}}
+{{- $isbn := .isbn}}
+{{- if isset $.Params "publisher" }}
+({{- if gt $pl 0 | and (isset $.Params "publisher_place") | and (index $.Params "publisher_place") -}}
+    {{- index $.Params "publisher_place" -}}:
+ {{ end -}}
+  {{- $.Params.publisher -}}
+  {{- if gt .bib_with_year 0 }}
+  {{ $.Date.Format "2006" -}}
+  {{- end -}})
+{{- end -}}
+
+{{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: {{ $.Params.isbn }}{{ end -}}

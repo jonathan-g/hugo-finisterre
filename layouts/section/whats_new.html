@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $posts_title := index .Site.Params "posts_title" | default "Posts" }}
+{{ $posts_count := index .Site.Params "posts_count" | default 2 }}
+{{ $pubs_title := index .Site.Params "pubs_title" | default "Publications" }}
+{{ $pubs_count := index .Site.Params "pubs_count" | default 3 }}
+{{ $teach_title := index .Site.Params "teach_title" | default "Teaching" }}
+{{ $teach_count := index .Site.Params "teach_count" | default 3}}
+<div class="row">
+	<div class="column small-12">
+		<h2>What's New on the Site</h2>
+	</div>
+	<div class="row">
+		<div class="column small-12 medium-6">
+			<h3>Recent {{ $pubs_title }}</h3>
+			<ul class="compact fa-ul">
+				{{ range first $pubs_count (where (where $.Site.Pages.ByDate "Section" "publications") "Params.pub_type" "!=" nil).Reverse }}
+
+				<li>{{ .Title }}: {{ partial "pub-summary" . }}</li>
+				{{ end }}
+			</ul>
+			<footer>
+	      <nav>
+	      <ul class="menu align-right">
+		      <li><a href="/publications/" class="nav-bar more">&rarr; more  {{ $pubs_title }}</a>
+	      </nav>
+	    </footer>
+		</div>
+
+		<div class="column small-12 medium-6">
+			<h3>Current Teaching</h3>
+			<ul>
+				{{ range first 3 (where (where $.Site.Pages.ByDate "Section" "teaching") "Params.date" "!=" nil).Reverse }}
+					{{ partial "teach-summary" . }}
+				{{ end }}
+			</ul>
+			<footer>
+	      <nav>
+	      <ul class="menu align-right">
+		      <li><a href="/teaching/" class="nav-bar more">&rarr; more  {{ $teach_title }}</a>
+	      </nav>
+	    </footer>
+		</div>
+	</div>
+</div>
+{{ end }}

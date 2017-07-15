@@ -1,0 +1,10 @@
+{{- $ := .dot -}}
+{{- $authors := apply (apply  $.Params.short_author "partial" "pub_fmt/author" ".") "chomp" "." -}}
+{{ if gt (len $authors) 3 }}
+{{ $first_n := first 1 $authors }}
+{{ print $first_n " et al." }}
+{{ else if gt (len $authors) 2 }}
+{{- delimit $authors ", " ", & " -}}
+{{ else }}
+{{ delimit $authors " & " }}
+{{ end }}

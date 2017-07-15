@@ -1,0 +1,11 @@
+{{- $ := .dot -}}
+{{ partial "pub_fmt/book_title" . -}}.
+{{ partial "pub_fmt/authors" . -}}.
+
+Patent #{{ $.Params.number }}, issued {{ $.Date.Format "2 Jan. 2006" }}
+{{- if gt .doi 0 -}}
+{{- partial "pub_fmt/doi" . -}}
+{{- end -}}.
+{{- if gt .pdf 0 }}
+{{ partial "pub_fmt/pdf" . -}}
+{{- end }}

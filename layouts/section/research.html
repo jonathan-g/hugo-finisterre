@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <div class="row">
+      <div class="column small-12">
+        {{ template "site_templates/research_overview.html" . }}
+      </div>
+    </div>
+    <div class="row" style="padding-top:1ex;">
+      <div class="column small-12">
+        <h2>Research</h2>
+        <ul>
+          {{ range where .Data.Pages.ByWeight "Params.weight" ">" 0 }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+{{ end }}

@@ -1,0 +1,3 @@
+{{- $ := .dot -}}
+{{- partial "pub_fmt/editor_list" . }}
+({{ if gt (len $.Params.editor) 1 -}}eds.{{- else -}}ed.{{- end -}})
