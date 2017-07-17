@@ -4,7 +4,8 @@
   <div class="row">
     <div class="column small-12 medium-5">
       <h3>About</h3>
-        <figure class="image-left">
+        <span>
+        <figure class="image-left" style="margin:0 0.5em 0.2em 0">
   	     <img class="avatar" src="/img/
          {{- if $.Site.Params.avatar -}}
            {{ $.Site.Params.avatar -}}
@@ -12,9 +13,10 @@
            avatar.jpg
          {{- end -}}" alt="Portrait of the author"/>
         </figure>
-        <p>
+        </span>
+        <span>
         {{ template "site_templates/about_me.html" }}
-        </p>
+        </span>
     </div>
     <div class="column small-12 medium-4">
       <h3 id="contact">Contact</h3>
@@ -24,13 +26,17 @@
     {{ . | safeHTML }}
   {{ end }}
   </li>
-	{{ range $.Site.Params.social }}
+	{{ range sort $.Site.Params.social "priority" }}
 	<li>
   {{- if .icon -}}
   <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
   {{- end -}}
   {{- if .site -}}{{.site}} {{ end -}}
+  {{- if .link -}}
   <a href="{{ .link }}">{{ .text }}</a>
+  {{- else -}}
+  {{- .text -}}
+  {{- end -}}
   {{ if .on_site }} on {{ .on_site }}{{ end }}
   </li>
 	{{ end }}

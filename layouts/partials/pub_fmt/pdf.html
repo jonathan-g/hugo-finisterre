@@ -1,6 +1,6 @@
 {{- $ := .dot -}}
 {{- if isset $.Params "file" }}
-{{- range where $.Params.file "desc" "full text" -}}
-<a href="{{.Site.BaseURL}}files/pubs/pdfs/{{ index .file }}" class="button hollow small pub-link"><i class="fa fa-file-pdf-o"></i>&nbsp;pdf</a>
-{{- end -}}
+{{- range where $.Params.file "desc" "full text" }}
+<a href="{{.Site.BaseURL}}files/pubs/pdfs/{{ index .file }}" class="badge badge-small badge-red"><i class="fa fa-file-pdf-o"></i>&nbsp;PDF</a>
+{{ end -}}
 {{ end -}}

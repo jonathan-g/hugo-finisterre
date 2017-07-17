@@ -1,1 +1,1 @@
-{{ if (le .Date.Unix now.Unix) }}{{ if (le now.Unix (time .Params.enddate).Unix) }}<span class="button small now-on">now on</span>{{ end }}{{ end }}
+{{ if (le .Date.Unix now.Unix) }}{{ if (le now.Unix (time .Params.enddate).Unix) }}<span class="badge badge-small now-on caps">now on</span>{{ end }}{{ end }}

@@ -1,10 +1,10 @@
 {{- $ := .dot -}}
-{{ partial "pub_fmt/book_title" . -}}.
-{{ delimit (apply (apply  $.Params.author "partial" "pub_fmt/authors" ".") "chomp" ".") ", " -}}.
-{{ partial "pub_fmt/publisher" . -}}
+{{ partial "pub_fmt/book_title" . -}},
+{{ delimit (apply (apply  $.Params.author "partial" "pub_fmt/authors" ".") "chomp" ".") ", " -}},
+{{ partial "pub_fmt/publisher" . -}}.
 {{- if gt .doi 0 -}}
 {{- partial "pub_fmt/doi" . -}}
-{{- end -}}.
+{{- end -}}
 {{- if gt .pdf 0 }}
 {{ partial "pub_fmt/pdf" . -}}
 {{- end }}

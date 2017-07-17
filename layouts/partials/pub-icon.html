@@ -1,7 +1,7 @@
-{{ $pub_status_icon := (dict "unpublished" "file-text-o") }}
-{{ $pub_type_icon := (dict "book" "book" "patent" "flask" "article" "file-text") }}
-{{ $pub_default_icon := "file-text" }}
-{{ $pub_type := index .Params "pub_type" | default "" }}
-{{ $pub_status := index .Params "pub_status" | default "" }}
-{{ $pub_icon := (index $pub_status_icon $pub_status) | default (index $pub_type_icon $pub_type) | default $pub_default_icon }}
-fa-{{ $pub_icon }}
+{{- $pub_status_icon := (dict "unpublished" "file-text-o") -}}
+{{- $pub_type_icon := (dict "book" "book" "patent" "flask" "article" "file-text") -}}
+{{- $pub_default_icon := "file-text" -}}
+{{- $pub_type := index .Params "pub_type" | default "" -}}
+{{- $pub_status := index .Params "pub_status" | default "" -}}
+{{- $pub_icon := (index $pub_status_icon $pub_status) | default (index $pub_type_icon $pub_type) | default $pub_default_icon -}}
+fa-{{ $pub_icon -}}

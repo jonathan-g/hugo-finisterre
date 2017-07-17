@@ -22,7 +22,7 @@
       {{ if (le now.Unix (add $classend 10368000)) }}
       	<li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
         <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
-      	<span class="button hollow small pub-link">completed</span>
+      	<span class="badge badge-small">completed</span>
       	</li>
       {{ end }}
     {{ end }}

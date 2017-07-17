@@ -72,12 +72,33 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- LaTeX math rendering -->
-    {{ if or (and (isset .Site.Params "math") (eq .Site.Params.math true)) (and (isset .Params "math") (eq .Params.math true)) }}
+    {{ if or (and (isset .Site.Params "mathjax") (eq .Site.Params.mathjax true)) (or (and (isset .Site.Params "math") (eq .Site.Params.math true)) (or (and (isset .Params "mathjax") (eq .Params.mathjax true)) (or (and (isset .Params "math") (eq .Params.math true)) (or (and (isset .Site.Params "mhchem") (eq .Site.Params.mhchem true)) (and (isset .Params "mhchem") (eq .Params.mhchem true)))))) }}
     <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+      {{- if and (isset .Site.Params "mhchem") (eq .Site.Params.mhchem true) }}
+      MathJax.Ajax.config.path["mhchem"] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.2.0";
+      {{- end }}
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        CommonHTML: {
+          scale: 80,
+          mtextFontInherit: true
+        },
+        "HTML-CSS": {
+          preferredFont: "STIX",
+          webFont: "Asana-Math",
+          scale: 80
+        }
+        {{- if and (isset .Site.Params "mhchem") (eq .Site.Params.mhchem true) }},
+        TeX: {
+          extensions: ["[mhchem]/mhchem.js"]
+        }
+        {{- end }}
+      });
     </script>
-    <script async src="{{ .Site.BaseURL }}js/MathJax/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML">
+    </script>
     {{ end }}
+
 
   </body>
 </html>

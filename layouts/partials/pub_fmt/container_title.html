@@ -1,3 +1,2 @@
 {{- $ := .dot -}}
-<i>{{ index $.Params "container_title" }}</i>
-
+<i>{{ index $.Params "container_title" | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup style=\"font-size:50%;\">$1</sup>" | safeHTML }}</i>

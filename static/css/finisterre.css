@@ -13,6 +13,97 @@
      .no-js .title-bar { display: none; }
  }
 
+/* Basic default styling, taken from kube.css */
+ html,
+ body,
+ div,
+ span,
+ object,
+ iframe,
+ p,
+ blockquote,
+ pre,
+ a,
+ abbr,
+ acronym,
+ address,
+ big,
+ cite,
+ code,
+ del,
+ dfn,
+ em,
+ img,
+ ins,
+ kbd,
+ q,
+ s,
+ samp,
+ small,
+ strike,
+ strong,
+ sub,
+ sup,
+ tt,
+ var,
+ b,
+ u,
+ i,
+ center,
+ dl,
+ dt,
+ dd,
+ ol,
+ ul,
+ li,
+ fieldset,
+ form,
+ label,
+ legend,
+ table,
+ caption,
+ tbody,
+ tfoot,
+ thead,
+ tr,
+ th,
+ td,
+ article,
+ aside,
+ canvas,
+ details,
+ embed,
+ figure,
+ figcaption,
+ footer,
+ header,
+ hgroup,
+ menu,
+ nav,
+ output,
+ ruby,
+ section,
+ summary,
+ time,
+ mark,
+ audio,
+ video,
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   margin: 0;
+   padding: 0;
+   border: 0;
+   outline: 0;
+   font-size: 100%;
+   vertical-align: baseline;
+   background: transparent;
+ }
+
+
  /* Basic colors and fonts.  */
  body {
   font-family: 'ff-tisa-web-pro', Georgia, 'Times New Roman', Times, Serif;
@@ -25,6 +116,11 @@ p {
   font-family: 'ff-tisa-web-pro', Georgia, 'Times New Roman', Times, Serif;
   font-size: 100%;
   line-height: 1.6em;
+}
+
+p:not(:first-of-type),
+p.next-par {
+  text-indent: 1em;
 }
 
  /* Title and top bar navigation.  */
@@ -320,12 +416,6 @@ button {
   *  Publications
   **************************************************/
 
- .pub-icon {
-     color: #101730;
-     font-size: 0.81em;
-     padding-top: 6px;
- }
-
  .pub-banner {
      max-width: 100%;
      height: auto;
@@ -483,3 +573,103 @@ button {
  #topbar li a {color: #fff; border-bottom: none;}
  #topbar li a {color: #b3cde0;}
  #topbar li span a {color: #fff;}
+
+ /* =Labels
+ -----------------------------------------------------------------------------*/
+ .label,
+ .badge {
+   background: #e0e3e5;
+   font-size: 12.75px;
+   display: inline-block;
+   line-height: 1;
+   padding: 4px 7px 4px 7px;
+   color: #0f0f0f;
+   text-align: center;
+   font-weight: normal;
+   text-transform: uppercase;
+ }
+ .label-outline {
+   background: none;
+   border: 1px solid #0f0f0f;
+   padding: 3px 6px 2px 6px;
+ }
+ .badge {
+   border-radius: 15px;
+ }
+ .badge-small {
+   font-size: 11.25px;
+   padding: 4px 5px 4px 5px;
+ }
+ .label-black,
+ .label-blue,
+ .label-red,
+ .label-green,
+ .badge-black,
+ .badge-blue,
+ .badge-red,
+ .badge-green {
+   color: #ffffff;
+ }
+ .label-black,
+ .badge-black {
+   background: #0f0f0f;
+ }
+ .label-blue,
+ .badge-blue {
+   background: #4673B8;
+ }
+ .label-red,
+ .badge-red {
+   background: #BD666D;
+ }
+ .label-green,
+ .badge-green {
+   background: #2c9f42;
+ }
+ .label-yellow,
+ .badge-yellow {
+   background: #ffc800;
+ }
+ .label-white,
+ .badge-white {
+   background: #ffffff;
+ }
+ .label-black.label-outline,
+ .label-blue.label-outline,
+ .label-red.label-outline,
+ .label-green.label-outline,
+ .label-yellow.label-outline,
+ .label-white.label-outline {
+   background: none;
+   color: #0f0f0f;
+ }
+ .label-blue.label-outline {
+   border-color: #2575ed;
+   color: #2575ed;
+ }
+ .label-red.label-outline {
+   border-color: #de2c3b;
+   color: #de2c3b;
+ }
+ .label-green.label-outline {
+   border-color: #2c9f42;
+   color: #2c9f42;
+ }
+ .label-yellow.label-outline {
+   border-color: #ffc800;
+   color: #ffc800;
+ }
+ .label-white.label-outline {
+   border-color: #ffffff;
+   color: #ffffff;
+ }
+
+ .label.now-on,
+ .badge.now-on {
+   background: #a0f0a0;
+  }
+
+ .label.coming-soon,
+ .badge.coming-soon {
+   background: #f0f000;
+  }

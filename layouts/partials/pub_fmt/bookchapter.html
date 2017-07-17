@@ -6,13 +6,11 @@ in
   {{ partial "pub_fmt/editors" . -}},
 {{ end -}}
 {{ partial "pub_fmt/container_title" . | chomp -}}
-{{- if (isset $.Params "page") | and (not (eq $.Params.page "")) -}}
-      ,  {{ $.Params.page -}}
-{{- end }}
-{{ partial "pub_fmt/publisher" . -}}
+{{ partial "pub_fmt/pages" . | chomp }}
+{{ partial "pub_fmt/publisher" . -}}.
 {{- if gt .doi 0 -}}
 {{- partial "pub_fmt/doi" . -}}
-{{- end -}}.
+{{- end -}}
 {{- if gt .pdf 0 }}
 {{ partial "pub_fmt/pdf" . -}}
 {{- end }}

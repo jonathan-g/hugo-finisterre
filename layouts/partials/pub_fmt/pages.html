@@ -1,4 +1,4 @@
 {{- $ := .dot -}}
 {{- if (isset $.Params "page") | and (not (eq $.Params.page "")) -}}
-        , {{ $.Params.page -}}
+        , {{ replace $.Params.page "-" "&ndash;" | safeHTML -}}
 {{- end -}}
