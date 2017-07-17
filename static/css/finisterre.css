@@ -587,6 +587,7 @@ button {
    text-align: center;
    font-weight: normal;
    text-transform: uppercase;
+   text-indent: 0;
  }
  .label-outline {
    background: none;

@@ -1,30 +1,30 @@
-{{ if ge .Date.Unix now.Unix -}}
+{{- if ge .Date.Unix now.Unix -}}
   {{ if le .Date.Unix (add now.Unix 7776000) }}
   	<li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "comingsoon.html" . }}
   	</li>
-  {{ else }}
+  {{- else -}}
   	<li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "comingsoon.html" . }}
   	</li>
-  {{ end }}
-{{ else }}
-  {{ if  le now.Unix (time .Params.enddate).Unix  }}
+  {{ end -}}
+{{- else -}}
+  {{- if  le now.Unix (time .Params.enddate).Unix }}
   	<li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
-  	{{ partial "nowon.html" . }}
+  	{{ partial "nowon.html" . -}}
   	</li>
-  {{ else }}
-    {{ $classend := (time .Params.enddate).Unix }}
-    {{ if (ge now.Unix $classend ) }}
-      {{ if (le now.Unix (add $classend 10368000)) }}
+  {{ else -}}
+    {{- $classend := (time .Params.enddate).Unix -}}
+    {{- if (ge now.Unix $classend ) -}}
+      {{- if (le now.Unix (add $classend 10368000)) }}
       	<li><i class="fa-li fa fa-mortar-board fa-fw" style="color:#03396c;font-size:80%;padding-top:6px;"></i><a href="{{ .Permalink }}">
         <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
       	<span class="badge badge-small">completed</span>
       	</li>
-      {{ end }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+      {{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

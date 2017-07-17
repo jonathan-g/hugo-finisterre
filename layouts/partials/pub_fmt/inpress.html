@@ -1,0 +1,5 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "date" }}
+{{- $pub_time := (time $.Params.date) -}}
+{{- if ge $pub_time.Unix now.Unix }} <span class="badge badge-small coming-soon caps">in press</span>{{ end -}}
+{{- end -}}
