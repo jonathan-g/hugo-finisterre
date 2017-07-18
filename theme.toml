@@ -27,8 +27,3 @@ min_version = 0.21
 [author]
   name = "Jonathan Gilligan"
   homepage = "https://www.jonathangilligan.org/"
-
-[original]
-  author = "Marcus Brinkmann"
-  homepage = "https:/lambdafu.net"
-  repo = "https://github.com/lambdafu/hugo-finite"

@@ -1,28 +1,28 @@
-{{ partial "header.html" . }}
-<body lang="en" itemscope itemtype="https://schema.org/Article">
-<div id="topbar">
-<div class="wrapper">
-  <header>
-
-  {{ partial "sidebar.html" . }}
-
-  {{ $baseurl := .Site.BaseURL }}
-  </header>
-</div>
-</div>
-
-<div class="wrapper">
-  <div class="units-row">
-    <div class="unit-centered unit-80">
-      <article class="post" id="content">
-        {{ .Content }}
-      </article>
-    </div>
+{{ define "top-bar-right" }}
+{{ partial "share.html" $ }}
+{{ end }}
+{{ define "title-bar-right" }}
+{{ partial "share.html" $ }}
+{{ end }}
+{{ define "whatisthis" }}
+{{ partial "whatisthis-short.html" . }}
+{{ end }}
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12 medium-10 medium-offset-1 end large-8 large-offset-0">
+    <h3>{{ .Title }}</h3>
+    {{ .Content }}
+    <hr>
+    {{ if .PrevInSection }}
+      <a href="{{.PrevInSection.Permalink}}"> &laquo; &nbsp;
+        {{- .PrevInSection.Title -}}
+      </a>
+     {{ if .NextInSection }} | {{ end }}
+   {{ end }}
+   {{ if .NextInSection }}
+     <a href="{{.NextInSection.Permalink}}">
+     {{- .NextInSection.Title -}}&nbsp;&raquo;</a>
+   {{ end }}
   </div>
 </div>
-
-<hr class="separator">
-
-{{ partial "whatisthis.html" . }}
-
-{{ partial "foot.html" . }}
+{{ end }}
