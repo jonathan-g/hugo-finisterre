@@ -1,23 +1,52 @@
-{{ define "top-bar-right" }}
-{{ partial "share.html" $ }}
-{{ end }}
-{{ define "title-bar-right" }}
-{{ partial "share.html" $ }}
-{{ end }}
-{{ define "whatisthis" }}
-{{ partial "whatisthis-short.html" . }}
-{{ end }}
+{{- define "top-bar-right" -}}
+{{- partial "share.html" $ -}}
+{{- end -}}
+{{- define "title-bar-right" }}
+{{- partial "share.html" $ -}}
+{{- end -}}
+{{- define "whatisthis" -}}
+{{- partial "whatisthis-short.html" . -}}
+{{- end -}}
 {{ define "main" }}
+{{- $performance_title := .Params.performance_title | default "Performances" -}}
 <div class="row">
   <div class="column small-12 medium-10 medium-offset-1  large-8 large-offset-2 end">
+  <article class="pub" itemscope itemtype="http://schema.org/CreativeWork">
     <h1>{{ .Title | markdownify }}</h1>
-    <ul style="margin-left:1.5em;margin-bottom:1em;">
+    <ul style="list-style-position:inside;margin-bottom:1em;">
     {{- range .Params.writing_credit }}
     <li>{{. | markdownify }}
     </li>
     {{ end -}}
     </ul>
+    {{- if isset .Params "banner" -}}
+      {{- if ne (index .Params.banner "img") nil }}
+        <img src="{{ .Params.banner.img }}"/>
+      {{- else -}}
+        {{- if ne (index .Params.banner "embed") nil }}
+          {{ .Params.banner.embed | safeHTML }}
+        {{ else }}
+        {{ end -}}
+      {{ end -}}
+      {{- if ne (index .Params.banner "credit") nil -}}
+      <p>{{ .Params.banner.credit | markdownify }}</p>
+      {{ end -}}
+    {{- end -}}
+    {{- if isset .Params "performances" -}}
+      <h3>{{ $performance_title }}:</h3>
+      <ul style="list-style-position:inside;margin-bottom:1em;">
+      {{- range $performance := .Params.performances -}}
+        <li><b>{{ index $performance "date" | markdownify }}</b>, {{ index $performance "description" | markdownify }}.
+        {{- if ne (index $performance "credits") nil }}
+        <br/>{{ index $performance "credits" | markdownify }}
+        {{ end -}}
+        </li>
+      {{- end -}}
+      </ul>
+    {{- end -}}
     {{ .Content }}
+
+    </article>
     <hr>
     {{ if .PrevInSection }}
       <a href="{{.PrevInSection.Permalink}}"> &laquo; &nbsp;

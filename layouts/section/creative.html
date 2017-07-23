@@ -7,7 +7,7 @@
   <div class="column small-12 large-8 large-offset-2">
   {{ range .Data.Pages }}
     <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
-    <ul style="margin-left:1.5em;">
+    <ul style="list-style-position:inside;">
     {{- range .Params.writing_credit }}
     <li>{{. | markdownify }}
     </li>
