@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12 large-8 large-offset-2">
+  <h1>Creative Work</h1>
+  </div>
+  <div class="row" style="padding-left:1em;padding-right:1em;">
+  <div class="column small-12 large-8 large-offset-2">
+  {{ range .Data.Pages }}
+    <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+    <ul style="margin-left:1.5em;">
+    {{- range .Params.writing_credit }}
+    <li>{{. | markdownify }}
+    </li>
+    {{ end -}}
+    </ul>
+    <footer>
+        <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
+    </footer>
+  {{ end }}
+  </div>
+</div>
+
+{{ end }}

@@ -1,0 +1,17 @@
+<article class="postlist">
+    <header>
+      <h2><a href='{{ .Permalink }}'> {{ .Title }}</a> </h2>
+
+      <ul>
+      {{ range .Params.writing_credit }}
+      <li>{{ . }}</li>
+      {{ end }}
+      </ul>
+    </header>
+
+    {{ .Summary }}
+
+    <footer>
+        <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
+    </footer>
+</article>

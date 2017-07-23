@@ -5,6 +5,9 @@
 {{- if gt .doi 0 -}}
 {{- partial "pub_fmt/doi" . -}}
 {{- end -}}
+{{- if gt .amazon 0 }}
+{{ partial "pub_fmt/amazon" . -}}
+{{- end }}
 {{- if gt .pdf 0 }}
 {{ partial "pub_fmt/pdf" . -}}
 {{- end }}

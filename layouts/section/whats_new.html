@@ -1,16 +1,46 @@
 {{ define "main" }}
-{{ $posts_title := index .Site.Params "posts_title" | default "Posts" }}
-{{ $posts_count := index .Site.Params "posts_count" | default 2 }}
-{{ $pubs_title := index .Site.Params "pubs_title" | default "Publications" }}
-{{ $pubs_count := index .Site.Params "pubs_count" | default 3 }}
-{{ $teach_title := index .Site.Params "teach_title" | default "Teaching" }}
-{{ $teach_count := index .Site.Params "teach_count" | default 3}}
+{{- $posts_title := index .Site.Params "posts_title" | default "Posts" -}}
+{{- $posts_count := index .Site.Params "posts_count" | default 2 -}}
+{{- $pubs_title  := index .Site.Params "pubs_title"  | default "Publications" -}}
+{{- $pubs_count  := index .Site.Params "pubs_count"  | default 3 -}}
+{{- $teach_title := index .Site.Params "teach_title" | default "Teaching" -}}
+{{- $teach_count := index .Site.Params "teach_count" | default 3 -}}
+{{- $news_title  := index .Site.Params "news_title"  | default "News Coverage" -}}
+{{- $news_count  := index .Site.Params "news_count"  | default 3 -}}
+{{- $news_current_months := index .Site.Params "news_current_months" | default 2 }}
+{{- $news_current_count := len (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil) ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))) -}}
+{{- if gt $news_current_count 0 -}}
+  {{- $.Scratch.Set "pub_col_class" "small-12 medium-4" -}}
+  {{- $.Scratch.Set "teach_col_class" "small-12 medium-4" -}}
+{{- else -}}
+  {{- $.Scratch.Set "pub_col_class" "small-12 medium-6" -}}
+  {{- $.Scratch.Set "teach_col_class" "small-12 medium-6" -}}
+{{- end -}}
+{{- $pub_col_class := ($.Scratch.Get "pub_col_class") -}}
+{{- $teach_col_class := ($.Scratch.Get "teach_col_class") -}}
 <div class="row">
 	<div class="column small-12">
 		<h1>What's New on the Site</h1>
 	</div>
-	<div class="row">
-		<div class="column small-12 medium-6">
+  <div class="row">
+    {{- if gt $news_current_count 0 -}}
+      <div class="column small-12 medium-4">
+      <h3>Recent {{ $news_title }}</h3>
+      <ul>
+      {{ range first $news_current_count (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse }}
+      <li>{{ .Title }} {{ partial "news-capsule" . }}</li>
+      {{ end -}}
+      </ul>
+      <footer>
+	      <nav>
+	      <ul class="menu align-right">
+		      <li><a href="/teaching/" class="nav-bar more">&rarr; more  {{ $news_title }}</a>
+	      </nav>
+	    </footer>
+      </div>
+      <div class="show-for-small-only"><hr/></div>
+    {{- end -}}
+		<div class="column {{ $pub_col_class }}">
 			<h3>Recent {{ $pubs_title }}</h3>
 			<ul class="compact fa-ul">
 				{{ range first $pubs_count (where (where $.Site.Pages.ByDate "Section" "publications") "Params.pub_type" "!=" nil).Reverse }}
@@ -25,8 +55,8 @@
 	      </nav>
 	    </footer>
 		</div>
-
-		<div class="column small-12 medium-6">
+    <div class="show-for-small-only"><hr/></div>
+		<div class="column {{ $teach_col_class }}">
 			<h3>Current Teaching</h3>
 			<ul>
 				{{ range first 3 (where (where $.Site.Pages.ByDate "Section" "teaching") "Params.date" "!=" nil).Reverse }}

@@ -1,0 +1,5 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "amazon" }}
+<a href="{{ $.Params.amazon | safeHTML }}" target="_blank" class="badge badge-small"><i class="fa fa-amazon"></i>
+Amazon</a>
+{{ end -}}

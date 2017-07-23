@@ -11,20 +11,13 @@
 <div class="row">
   <div class="column small-12 medium-10 medium-offset-1 end large-8 large-offset-0">
     <article class="article" itemscope itemtype="http://schema.org/Article">
-      {{- if .Params.image }}
-      <div class="article-banner">
+      {{ if .Params.image }}
       <img src="{{ $.Site.BaseURL }}img/{{ .Params.image }}" class="article-banner" itemprop="image">
-        {{- if isset .Params "image_credit" }}
-        <div class="image-credit">
-        <span>{{ .Params.image_credit | markdownify }}</span>
-        </div>
-        {{ end -}}
-      </div>
-      {{ end -}}
+      {{ end }}
       <h1 itemprop="name">{{ .Title }}</h1>
-      {{ partial "post-metadata" . }}
+      {{ partial "news-metadata" . }}
       <div class="post-body" itemprop="articleBody">
-        {{ .Content }}
+        {{ .Content | markdownify }}
       </div>
 
       <meta itemprop="wordCount" content="{{ .WordCount }}">

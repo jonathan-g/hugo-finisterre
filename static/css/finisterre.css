@@ -116,10 +116,15 @@ p {
   font-family: 'ff-tisa-web-pro', Georgia, 'Times New Roman', Times, Serif;
   font-size: 100%;
   line-height: 1.6em;
+  text-indent:0;
 }
 
-p:not(:first-of-type),
-.next-par {
+p:first-child
+p:first-of-type {
+  text-indent: 0;
+}
+
+p+p {
   text-indent: 1em;
 }
 
@@ -216,16 +221,26 @@ button {
  	font-weight: normal;
  	font-style: italic;
  }
- h3 {
+ h3,h4 {
    font-family: 'ff-meta-serif-sc-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
    text-transform: lowercase;
    font-style: normal;
+ }
+ h3 {
+   font-weight: bold;
+ }
+
+ p~h3 {
+   margin-top:0.5em;
+   margin-bottom:0.3em;
  }
 
  h1, h2 {
    font-family: 'ff-meta-web-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
    font-weight: 600;
    test-transform: initial;
+   margin-top: 0.5em;
+   margin-bottom: 0.25em;
  }
 
 
@@ -714,4 +729,24 @@ button {
     line-height: 0.1em;
     margin-right: 0.25em;
     vertical-align: -0.4em;
+  }
+
+  div.image-credit {
+    text-align: right;
+    margin-top:0;
+    padding:0;
+  }
+
+  img.article-banner {
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+
+  .image-credit span,
+  .image-credit p {
+    margin-top:0;
+    padding:0;
+    text-align:right;
+    font-size:80%;
+    color: #808080;
   }

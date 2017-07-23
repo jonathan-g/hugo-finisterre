@@ -1,0 +1,12 @@
+{{ define "main" }}
+<!-- news list -->
+<div class="row">
+  <div class="column small-12">
+    {{ $paginator := .Paginate .Data.Pages }}
+    {{ range $paginator.Pages }}
+    {{ partial "news-summary" . }}
+    {{ end }}
+    {{ partial "pagination" . }}
+  </div>
+</div>
+{{ end }}

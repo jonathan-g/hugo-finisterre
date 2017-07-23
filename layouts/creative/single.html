@@ -1,0 +1,34 @@
+{{ define "top-bar-right" }}
+{{ partial "share.html" $ }}
+{{ end }}
+{{ define "title-bar-right" }}
+{{ partial "share.html" $ }}
+{{ end }}
+{{ define "whatisthis" }}
+{{ partial "whatisthis-short.html" . }}
+{{ end }}
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12 medium-10 medium-offset-1  large-8 large-offset-2 end">
+    <h1>{{ .Title | markdownify }}</h1>
+    <ul style="margin-left:1.5em;margin-bottom:1em;">
+    {{- range .Params.writing_credit }}
+    <li>{{. | markdownify }}
+    </li>
+    {{ end -}}
+    </ul>
+    {{ .Content }}
+    <hr>
+    {{ if .PrevInSection }}
+      <a href="{{.PrevInSection.Permalink}}"> &laquo; &nbsp;
+        {{- .PrevInSection.Title | markdownify -}}
+      </a>
+     {{ if .NextInSection }} | {{ end }}
+   {{ end }}
+   {{ if .NextInSection }}
+     <a href="{{.NextInSection.Permalink}}">
+     {{- .NextInSection.Title | markdownify -}}&nbsp;&raquo;</a>
+   {{ end }}
+  </div>
+</div>
+{{ end }}
