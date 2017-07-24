@@ -1,5 +1,8 @@
 <!doctype html>
-<html class="no-js" lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+{{- $site_type := $.Site.Params.site_type | default "WebSite" }}
+{{- $site_subject_type := $.Site.Params.site_subject_type | default "Person" -}}
+{{- $site_subject_name := $.Site.Params.site_subject_name | default $.Site.Params.AuthorName -}}
+<html class="no-js" lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" itemscope itemtype="http://schema.org/{{ $site_type | safeHTML }}" id="website">
   <head>
     <meta charset="utf-8">
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
@@ -8,6 +11,8 @@
     {{- if isset .Params "keywords" }}
       <meta name="keywords" {{ printf "content=%q" (delimit .Params.keywords ",") | safeHTMLAttr }}/>
     {{ end -}}
+    <meta itemprop="about" itemscope itemtype="http://schema.org/{{ $site_subject_type }}" itemref="site-about"/>
+    <meta itemprop="name" content="{{ $site_subject_name }}" id="site-about"/>
     {{ partial "typekit.html" . }}
     <!--
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/foundation.min.css">
@@ -19,7 +24,7 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/finisterre.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/site.css">
   </head>
-  <body>
+  <body itemscope itemtype="http://schema.org/WebPage" id="webpage">
     <header>
       <nav class="nav-bar">
 	<!-- The title bar is used for small sizes.  -->
