@@ -65,7 +65,10 @@
     {{ block "whatisthis" . }}
     {{ partial "whatisthis" . }}
     {{ end }}
-    <div class="endofpage">
+    <div class="endofpage" style="display:flex;align-items:center">
+    {{ block "foot" . }}
+    {{ partial "foot" . }}
+    {{ end }}
     </div>
 
     <script src="/js/jquery.js"></script>

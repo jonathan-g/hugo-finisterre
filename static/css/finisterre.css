@@ -207,12 +207,26 @@ a.nav-bar.more:hover {
  /* Last footer.  */
  .endofpage {
      /* background-image: url("/img/wave.png"); */
+     color: #faf8f8;
      background-color: #101730;
      height: 50px;
      background-repeat: repeat-x;
      margin-top: 3ex;
+     font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    width:100%;
  }
 
+.endofpage a {
+  color: #b3cde0;
+  border: none;
+}
+
+.endofpage a:hover {
+  color: #70C0FF;
+  border: none;
+}
 
  /* Main content.  */
  main {
