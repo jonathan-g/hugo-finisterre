@@ -1,4 +1,5 @@
 {{- $ := .dot -}}
+<article itemscope itemtype="http://schema.org/CreativeWork">
 {{ partial "pub_fmt/book_title" . -}},
 {{ partial "pub_fmt/authors" . -}},
 
@@ -15,3 +16,4 @@ Patent #{{ $.Params.number }}, issued {{ $.Date.Format "2 Jan. 2006" }}.
   <meta itemprop="author" content="{{ . | markdownify }}"/>
   {{- end -}}
 {{- end -}}
+</article>

@@ -1,4 +1,4 @@
 {{- $ := .dot -}}
 {{- if (isset $.Params "volume") | and (not (eq .Params.volume "")) }}
-        <b> {{ $.Params.volume }}</b>
+        <b><span itemprop="isPartOf" itemscope itemtype="http://schema.org/PublicationVolume"><span itemprop="volumeNumber">{{ $.Params.volume }}</span></span></b>
 {{- end -}}

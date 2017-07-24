@@ -1,4 +1,5 @@
 {{- $ := .dot -}}
+<article itemscope itemtype="http://schema.org/Book">
 {{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
 {{ partial "pub_fmt/authors" . | chomp -}}
 {{ partial "pub_fmt/publisher" . | chomp -}}.
@@ -20,3 +21,4 @@
   <meta itemprop="editor" content="{{ . | markdownify }}"/>
   {{- end -}}
 {{- end -}}
+</article>
