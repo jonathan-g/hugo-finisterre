@@ -1,5 +1,5 @@
-<article itemscope itemtype="http://schema.org/Article">
-<h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+<article itemscope itemtype="http://schema.org/NewsArticle">
+<h2><a href="{{ .RelPermalink }}"><span itemprop="name headline">{{ .Title }}</span></a></h2>
 {{ partial "news-metadata" . | chomp }}
 {{- if .Truncated }}
   {{ .Summary }}
