@@ -1,5 +1,5 @@
 {{- $ := .dot -}}
-<article itemscope itemtype="http://schema.org/Book">
+<article class="pub inline" itemscope itemtype="http://schema.org/Book">
 {{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
 {{ partial "pub_fmt/authors" . | chomp -}}
 {{ partial "pub_fmt/publisher" . | chomp -}}.
@@ -11,14 +11,17 @@
 {{- end }}
 {{- if isset $.Params "author" -}}
   {{- $author_names := apply (apply $.Params.author "partial" "pub_fmt/author" ".") "chomp" "." -}}
-  {{- range $author_names -}}
+  {{- range $author_names }}
   <meta itemprop="author" content="{{ . | markdownify }}"/>
   {{- end -}}
 {{- end -}}
 {{- if isset $.Params "editor" -}}
   {{- $ed_names := apply (apply $.Params.editor "partial" "pub_fmt/author" ".") "chomp" "." -}}
-  {{- range $ed_names -}}
+  {{- range $ed_names }}
   <meta itemprop="editor" content="{{ . | markdownify }}"/>
   {{- end -}}
+{{- end -}}
+{{- if gt .meta_doi 0 }}
+{{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
 </article>

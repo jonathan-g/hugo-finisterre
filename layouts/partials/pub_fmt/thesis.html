@@ -1,5 +1,5 @@
 {{- $ := .dot -}}
-<article itemscope itemtype="http://schema.org/CreativeWork">
+<article class="pub inline" itemscope itemtype="http://schema.org/CreativeWork">
 {{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
 {{ partial "pub_fmt/authors" . | chomp -}},
 {{ partial "pub_fmt/thesis_type" . | chomp }}.
@@ -10,8 +10,11 @@
 Thesis
 {{- if isset $.Params "author" -}}
   {{- $author_names := apply (apply $.Params.author "partial" "pub_fmt/author" ".") "chomp" "." -}}
-  {{- range $author_names -}}
+  {{- range $author_names }}
   <meta itemprop="author" content="{{ . | markdownify }}"/>
   {{- end -}}
+{{- end -}}
+{{- if gt .meta_doi 0 }}
+{{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
 </article>

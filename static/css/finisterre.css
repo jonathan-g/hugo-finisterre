@@ -822,3 +822,7 @@ a.nav-bar.more:hover {
     font-size:80%;
     color: #808080;
   }
+
+article.inline {
+  display: inline;
+}

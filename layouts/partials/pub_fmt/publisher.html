@@ -11,4 +11,6 @@
   {{- end -}})
 {{- end -}}
 
-{{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: <span itemprop="">{{ $.Params.isbn }}</span>{{ end -}}
+{{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: <span itemprop="isbn">{{ $.Params.isbn }}</span>
+{{ else }}<meta itemprop="isbn" content="{{ $.Params.isbn }}"/>
+{{- end -}}

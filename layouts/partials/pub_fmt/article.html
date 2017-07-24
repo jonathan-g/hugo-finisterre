@@ -1,5 +1,5 @@
 {{- $ := .dot -}}
-<article itemscope itemtype="http://schema.org/ScholarlyArticle">
+<article class="pub inline" itemscope itemtype="http://schema.org/ScholarlyArticle">
 {{ partial "pub_fmt/article_title" . | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup style=\"vertical-align:top;font-size:50%;\">$1</sup>" | safeHTML }}</i>
 {{ partial "pub_fmt/authors" . | chomp -}},
 {{ partial "pub_fmt/journal" . | chomp -}}
@@ -16,8 +16,11 @@
 {{- end }}
 {{- if isset $.Params "author" -}}
   {{- $author_names := apply (apply $.Params.author "partial" "pub_fmt/author" ".") "chomp" "." -}}
-  {{- range $author_names -}}
+  {{- range $author_names }}
     <meta itemprop="author" content="{{ . | markdownify }}"/>
   {{- end -}}
+{{- end -}}
+{{- if gt .meta_doi 0 -}}
+{{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
 </article>
