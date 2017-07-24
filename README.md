@@ -12,7 +12,7 @@ and also by the [Academic theme](https://themes.gohugo.io/academic/) for Hugo.
 
 For the Finisterre theme,
 I have added support for automatically generating publication lists
-from bibtex files (requires python and pandoc)
+from BibTeX files (requires python and pandoc)
 
 Contributions welcome!
 
