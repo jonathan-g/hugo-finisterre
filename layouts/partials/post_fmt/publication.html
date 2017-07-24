@@ -1,2 +1,8 @@
 {{- $ := .dot -}}
-<a href="{{ $.Params.pub_link }}">{{ $.Params.publication }}</a>
+{{- if isset $.Params "pub_link" -}}
+  <a href="{{ $.Params.pub_link }}">
+{{- end -}}
+<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><span itemprop="name">{{- $.Params.publication -}}</span></span>
+{{- if isset $.Params "pub_link" -}}
+  </a>
+{{- end -}}

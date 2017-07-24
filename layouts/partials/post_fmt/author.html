@@ -1,8 +1,8 @@
 {{- $ := .dot -}}
-{{- if or (isset $.Params "authors") (and (isset $.Params "author") (not (in (slice $.Site.Params.AuthorName "~" "" nil) $.Params.author))) -}}
+{{- if or .force (or (isset $.Params "authors") (and (isset $.Params "author") (not (in (slice $.Site.Params.AuthorName "~" "" nil) $.Params.author)))) -}}
 {{- if gt .pre_comma 0 }}, {{ end }}by
   {{ if isset $.Params "authors" -}}
-    {{ $author_ct := len $.Params.authors -}}
+    {{- $author_ct := len $.Params.authors -}}
     {{- range $i, $a := $.Params.authors -}}
     <span itemprop="author">{{ $a }}</span>
     {{- if lt $i (sub $author_ct 2) }},
@@ -11,8 +11,8 @@
         {{- if gt $author_ct 2 }},{{ end }}
         and
         {{ end -}}
-      {{- end }}
-    {{ end -}}
+      {{- end -}}
+    {{- end -}}
   {{- else -}}
     <span itemprop="author">{{ $.Params.author }}</span>
   {{- end -}}

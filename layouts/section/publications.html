@@ -9,9 +9,9 @@
       </div>
       <div class="column small-11 medium-11">
       	<ul class="compact fa-ul">
-      	  {{ range .Pages.ByDate.Reverse }}
+      	  {{- range .Pages.ByDate.Reverse }}
       	  <li>{{ partial "pub-summary" . | chomp }}</li>
-      	  {{ end }}
+      	  {{ end -}}
       	</ul>
       </div>
     </div>

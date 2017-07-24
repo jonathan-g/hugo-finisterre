@@ -75,8 +75,7 @@
   <div class="column {{ $pub_teach_col_class }}">
     <h3>Recent {{ $pubs_title }}</h3>
     <ul class="compact fa-ul">
-      {{ range first $pubs_count (where .Data.Pages.ByDate "Section" "publications").Reverse }}
-
+      {{ range first $pubs_count (where .Data.Pages.ByDate "Section" "publications").Reverse -}}
       <li>{{ partial "pub-summary" . }}</li>
       {{ end }}
     </ul>

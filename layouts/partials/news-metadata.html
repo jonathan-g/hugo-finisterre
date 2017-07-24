@@ -1,7 +1,7 @@
 <div class="post-metadata">
   <span class="post-date">
     {{ partial "post_fmt/date" (dict "dot" .) | chomp }}
-    {{- partial "post_fmt/author" (dict "dot" . "pre_comma" 1 "post_comma" 1) | chomp -}}
+    {{- partial "post_fmt/author" (dict "dot" . "pre_comma" 1 "post_comma" 1 "force" 1) | chomp -}}
     {{- partial "post_fmt/publication" (dict "dot" .) | chomp -}}
   </span>
   {{- partial "post_fmt/tags" (dict "dot" .) | chomp }}

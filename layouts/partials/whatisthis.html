@@ -15,7 +15,7 @@
         </figure>
         </span>
         <span>
-        {{ template "site_templates/about_me.html" }}
+        {{ template "site_templates/about_me.html" -}}
         </span>
     </div>
     <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
@@ -23,11 +23,11 @@
       <h3 id="contact">Contact</h3>
       <ul class="fa-ul">
   <li><i class="fa-li fa fa-university" style="padding-top:3px;"></i>
-  {{ range $.Site.Params.address }}
-    {{ . | safeHTML }}
+  {{- range $.Site.Params.address }}
+    {{ . | safeHTML -}}
   {{ end }}
   </li>
-	{{ range sort $.Site.Params.social "priority" }}
+	{{ range sort $.Site.Params.social "priority" -}}
 	<li>
   {{- if .icon -}}
   <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
@@ -38,9 +38,9 @@
   {{- else -}}
   {{- .text -}}
   {{- end -}}
-  {{ if .on_site }} on {{ .on_site }}{{ end }}
+  {{ if .on_site }} on {{ .on_site }}{{ end -}}
   </li>
-	{{ end }}
+	{{ end -}}
       </ul>
     </div>
     <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>

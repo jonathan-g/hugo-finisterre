@@ -7,7 +7,7 @@
     {{- end -}}
     <span>
     <span class="post-tags"><i class="fa fa-tags"></i>
-    {{- range $k, $v := $.Params.tags }}
+    {{- range $k, $v := $.Params.tags -}}
       <a class="post-tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize | lower }}">{{ . }}</a>{{ if lt $k (sub $tagsLen 1) }},{{ if gt 0 $k }}</span>{{ end}} {{ end }}
     {{ end -}}
     </span>
