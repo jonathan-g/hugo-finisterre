@@ -14,7 +14,10 @@
 {{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: <span itemprop="isbn">{{ $.Params.isbn }}</span>
 {{ else }}
   {{- if in (slice "chapter" "bookchapter" "inproceedings") $.Params.pub_type -}}
-  <meta itemprop="isPartOf"  itemscope itemtype="http://schema.org/Book" itemref="{{ $.Params.isbn }}"/>
+  <span itemprop="isPartOf"  itemscope itemtype="http://schema.org/Book">
   {{- end -}}
   <meta itemprop="isbn" content="{{ $.Params.isbn }}" id = "{{ $.Params.isbn }}"/>
+  {{- if in (slice "chapter" "bookchapter" "inproceedings") $.Params.pub_type -}}
+  </span>
+  {{- end -}}
 {{- end -}}
