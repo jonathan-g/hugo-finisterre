@@ -1,4 +1,4 @@
 {{- $ := .dot -}}
 {{- if (isset $.Params "page") | and (not (eq $.Params.page "")) -}}
-        , {{ replace $.Params.page "-" "&ndash;" | safeHTML -}}
+        , <span itemprop="pagination">{{ replace $.Params.page "-" "&ndash;" | safeHTML -}}</span>
 {{- end -}}

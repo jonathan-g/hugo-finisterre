@@ -1,0 +1,2 @@
+{{- $ := .dot -}}
+<time datetime="{{ $.Date }}" itemprop="datePublished">{{ $.Date.Format (default "2 January 2006" (index $.Site.Params "date_format")) }}</time>

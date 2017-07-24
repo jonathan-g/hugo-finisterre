@@ -1,0 +1,7 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "pub_link" -}}
+{{- if gt .para 0 }}<p>{{ end -}}
+<a class="post-pub-url" href="{{ $.Params.pub_link }}" target="_blank">{{ $.Params.pub_link }}</a>
+{{- if gt .para 0 }}</p>
+{{ end -}}
+{{- end -}}

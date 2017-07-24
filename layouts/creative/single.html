@@ -19,19 +19,7 @@
     </li>
     {{ end -}}
     </ul>
-    {{- if isset .Params "banner" -}}
-      {{- if ne (index .Params.banner "img") nil }}
-        <img src="{{ .Params.banner.img }}"/>
-      {{- else -}}
-        {{- if ne (index .Params.banner "embed") nil }}
-          {{ .Params.banner.embed | safeHTML }}
-        {{ else }}
-        {{ end -}}
-      {{ end -}}
-      {{- if ne (index .Params.banner "credit") nil -}}
-      <p>{{ .Params.banner.credit | markdownify }}</p>
-      {{ end -}}
-    {{- end -}}
+    {{- partial "post_fmt/banner" (dict "dot" . "rel_path" "." ) -}}
     {{- if isset .Params "performances" -}}
       <h3>{{ $performance_title }}:</h3>
       <ul style="list-style-position:inside;margin-bottom:1em;">

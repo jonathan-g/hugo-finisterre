@@ -7,3 +7,9 @@
 {{ partial "pub_fmt/pdf" . -}}
 {{- end }}
 Thesis
+{{- if isset $.Params "author" -}}
+  {{- $author_names := apply (apply $.Params.author "partial" "pub_fmt/author" ".") "chomp" "." -}}
+  {{- range $author_names -}}
+  <meta itemprop="author" content="{{ . | markdownify }}"/>
+  {{- end -}}
+{{- end -}}

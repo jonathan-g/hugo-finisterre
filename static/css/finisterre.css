@@ -578,19 +578,47 @@ a.nav-bar.more:hover {
      font-size: small;
  }
 
- .post-date {
-     font-style: italic;
-     margin-right: 1em;
+ .post-dateblock {
+   color: #606090;
+   margin-bottom: 1rem;
  }
 
+ .post-byline {
+   color: #606090;
+   margin-bottom: 0.5rem;
+ }
+
+ .post-pub-url {
+   font-size:80%;
+ }
+
+ .post-metadata .post-pub-url {
+   font-size:100%;
+ }
+
+ .post-byline a,
+ .post-dateblock a,
  .post-metadata a {
      color: #6060A0;
      border: none;
  }
 
+ .post-byline a:hover,
+ .post-dateblock a:hover,
  .post-metadata a:hover {
    color: #e82121;
  }
+
+ .post-date {
+     font-style: italic;
+     margin-right: 1em;
+ }
+
+.post-tags {
+  font-style: italic;
+  margin-right: 1em;
+  font-size: small;
+}
 
  /*  -----------------------------------------------------------------------------
      =Layout

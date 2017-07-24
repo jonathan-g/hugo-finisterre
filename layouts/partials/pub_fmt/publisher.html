@@ -3,12 +3,12 @@
 {{- $isbn := .isbn}}
 {{- if isset $.Params "publisher" }}
 ({{- if gt $pl 0 | and (isset $.Params "publisher_place") | and (index $.Params "publisher_place") -}}
-    {{- index $.Params "publisher_place" -}}:
+    <span itemprop="locationCreated">{{- index $.Params "publisher_place" -}}</span>:
  {{ end -}}
-  {{- $.Params.publisher -}}
+  <span itemprop="publisher" itemtype="http://schema.org/Organization" itemscope=""><span itemprop="name">{{ $.Params.publisher }}</span></span>
   {{- if gt .bib_with_year 0 }}
-  {{ $.Date.Format "2006" -}}
+  <span itemprop="datePublished">{{ $.Date.Format "2006" }}</span>
   {{- end -}})
 {{- end -}}
 
-{{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: {{ $.Params.isbn }}{{ end -}}
+{{- if gt $isbn 0 | and (isset $.Params "isbn") }}, ISBN: <span itemprop="">{{ $.Params.isbn }}</span>{{ end -}}

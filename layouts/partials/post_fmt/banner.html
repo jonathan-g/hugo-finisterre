@@ -1,0 +1,17 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "banner" -}}
+  <!-- the inline-block division forces the width to the contents, so the photo credit alignts with the right edge of the photo.  -->
+  <div style="display: inline-block">
+  {{- if ne (index $.Params.banner "image") nil }}
+    <img src="{{ delimit (slice .rel_path $.Params.banner.image) "/" | safeHTML }}" alt="{{ delimit (slice .rel_path $.Params.banner.image) "/" | safeHTML }}" />
+  {{- else -}}
+    {{- if ne (index $.Params.banner "embed") nil }}
+      {{ $.Params.banner.embed | safeHTML }}
+    {{ else }}
+    {{ end -}}
+  {{ end -}}
+  {{- if ne (index $.Params.banner "credit") nil -}}
+  <div class="image-credit"><span class="image-credit">{{ $.Params.banner.credit | markdownify }}</span></div>
+  {{ end -}}
+  </div>
+{{- end -}}

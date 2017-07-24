@@ -1,2 +1,2 @@
 {{- $ := .dot -}}
-&ldquo;{{- $.Params.title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup style=\"font-size:50%;\">$1</sup>" | safeHTML }}</i>,&rdquo;
+&ldquo;<span itemprop="name">{{- $.Params.title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup style=\"font-size:50%;\">$1</sup>" | safeHTML }}</span>,&rdquo;
