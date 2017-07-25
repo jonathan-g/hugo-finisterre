@@ -3,6 +3,6 @@
 {{ if false -}}<i class="ai ai-doi"></i> {{ end -}}
 <a href="https://doi.org/{{ $.Params.doi | safeHTML }}" target="_blank" class="badge badge-small badge-blue">DOI</a>
   {{- if eq .nomicrodata 0 }}
-    <meta itemprop="doi" content="{{ $.Params.doi | safeHTML }}"/>
+    <meta itemprop="sameAs" content="https://doi.org/{{ $.Params.doi | safeHTML }}"/>
   {{- end -}}
 {{ end -}}
