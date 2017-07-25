@@ -14,7 +14,7 @@
     <div class="row">
       <div class="column small-12 medium 8 medium-offset-4 large-10 large-offset-2">
         <h1 itemprop="name headline">{{ .Title }}</h1>
-        <div class="post-metadate">
+        <div class="post-metadata">
           <span class="post-date">
           {{- partial "post_fmt/author" (dict "dot" . "pre_comma" 0 "post_comma" 0) -}}
           </span>
@@ -33,6 +33,11 @@
       <div class="column small-12 medium-8 large-10">
         <div class="post-body" itemprop="articleBody">
           {{- partial "post_fmt/banner" (dict "dot" . "rel_path" (delimit (slice "/post/img" .Slug) "/")) -}}
+          {{- if isset .Params "pub_note" }}
+          <div style="margin-bottom:1em;">
+          <i>{{- .Params.pub_note | markdownify -}}</i>
+          </div>
+          {{ end -}}
           {{ .Content }}
         </div>
       </div>
