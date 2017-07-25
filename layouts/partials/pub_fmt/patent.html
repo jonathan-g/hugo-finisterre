@@ -19,4 +19,5 @@ Patent #{{ $.Params.number }}, issued {{ $.Date.Format "2 Jan. 2006" }}.
 {{- if gt .meta_doi 0 }}
 {{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
+<time datetime="{{ $.Date | safeHTML }}" itemprop="datePublished"></time>
 </article>

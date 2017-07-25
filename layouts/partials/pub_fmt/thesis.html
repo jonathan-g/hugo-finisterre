@@ -17,4 +17,5 @@ Thesis
 {{- if gt .meta_doi 0 }}
 {{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
+<time datetime="{{ $.Date | safeHTML }}" itemprop="datePublished"></time>
 </article>
