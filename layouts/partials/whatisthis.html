@@ -2,49 +2,45 @@
   <hr />
   <div class="wrapper" style="font-size:0.9em; line-height:1.05em;">
   <div class="row">
-    <div class="column small-12 medium-5">
-      <h3>About</h3>
-        <span>
-        <figure class="image-left" style="margin:0 0.5em 0.2em 0">
-  	     <img class="avatar" src="/img/
-         {{- if $.Site.Params.avatar -}}
-           {{ $.Site.Params.avatar -}}
-         {{- else -}}
-           avatar.jpg
-         {{- end -}}" alt="Portrait of the author"/>
-        </figure>
-        </span>
-        <span>
-        {{ template "site_templates/about_me.html" -}}
-        </span>
+    <div class="column small-12 medium-6 large-4">
+      {{ partial "foot_fmt/news_feed" . }}
     </div>
     <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
-    <div class="column small-12 medium-4">
-      <h3 id="contact">Contact</h3>
-      <ul class="fa-ul">
-  <li><i class="fa-li fa fa-university" style="padding-top:3px;"></i>
-  {{- range $.Site.Params.address }}
-    {{ . | safeHTML -}}
-  {{ end }}
-  </li>
-	{{ range sort $.Site.Params.social "priority" -}}
-	<li>
-  {{- if .icon -}}
-  <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
-  {{- end -}}
-  {{- if .site -}}{{.site}} {{ end -}}
-  {{- if .link -}}
-  <a href="{{ .link }}">{{ .text }}</a>
-  {{- else -}}
-  {{- .text -}}
-  {{- end -}}
-  {{ if .on_site }} on {{ .on_site }}{{ end -}}
-  </li>
-	{{ end -}}
-      </ul>
+    <div class="column small-12 medium-3 large-4">
+      <div class="row">
+        <div class="column small-12 medium-6" style="text-align:right;">
+           <figure style="display:inline;">
+    	     <img src="/img/
+           {{- if $.Site.Params.book_avatar -}}
+             {{ $.Site.Params.book_avatar -}}
+           {{- else -}}
+             book_avatar.jpg
+           {{- end -}}" alt="Book cover"/>
+           </figure>
+        </div>
+        <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
+        <div class="column small-12 medium-6">
+          <ul class="fa-ul" style="list-style-position:inside;display:inline;">
+          	{{ range sort $.Site.Params.book.social "priority" -}}
+            	<li>
+                {{- if .icon -}}
+                  <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
+                {{- end -}}
+                {{- if .site -}}{{ .site }} {{ end -}}
+                {{- if .link -}}
+                  <a href="{{ .link }}">{{ .text }}</a>
+                {{- else -}}
+                  {{- .text -}}
+                {{- end -}}
+                {{ if .on_site }} on {{ .on_site }}{{ end -}}
+              </li>
+          	{{ end -}}
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
-    <div class="column small-12 medium-3">
+    <div class="column small-12 medium-3 large-4">
       <h3>Subscribe</h3>
       <p>To receive updates, you can subscribe to
 	the <a href="/index.xml"><i class="fa fa-rss-square"></i>&nbsp;RSS feed</a> of all

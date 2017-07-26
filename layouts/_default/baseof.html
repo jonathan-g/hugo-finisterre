@@ -50,7 +50,7 @@
 		<ul class="menu vertical medium-horizontal">
 		  {{ $currentNode := . }}
 		  {{ range .Site.Menus.main }}
-		  <li><a href="{{.URL}}">{{ .Name }}</a></li>
+		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name }}</a></li>
 		  {{ end }}
 		</ul>
 	      </div>

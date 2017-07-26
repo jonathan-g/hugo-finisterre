@@ -2,7 +2,9 @@
 <section class="wrapper small">Powered by <a href="http://gohugo.io">Hugo</a> and
 <a href="http://foundation.zurb.com/">Foundation</a>, using the
 <a href="https://github.com/jonathan-g/hugo-finisterre">Finisterre</a> theme.
-&copy; Jonathan Gilligan 2017{{ if gt now.Year 2017 }}&ndash;{{ now.Format "2006" }}{{ end }}.
+{{- if isset $.Site.Params "web_designer_name" }}
+&copy; {{ $.Site.Params.web_designer_name }} {{ $.Site.Params.web_design_year }}{{ if gt now.Year $.Site.Params.web_design_year }}&ndash;{{ now.Format "2006" }}{{ end }}.
+{{ end -}}
 <!--
 <span style="margin-left:2em;">Design inspired by
 <a href="https://kieranhealy.org/" target="_blank">Kieran Healy</a> and
