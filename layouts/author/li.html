@@ -1,27 +1,25 @@
-<div>
-<table style="border:0;">
-<tbody style="border:0;">
-<tr style="vertical-align:middle;border:0;">
-<td style="vertical-align:middle;border:0;">
-<img class="avatar" src="/img/{{ .Params.author.head_shot }}"/>
-</td>
-<td style="vertical-align:middle;border:0;">
-<p><b>{{ .Params.author.name | markdownify }}</b> is
-{{- $title_ct := len .Params.author.titles }}
-{{- range $i, $t := .Params.author.titles }}
-  {{ $t | markdownify -}}
-    {{- if gt $title_ct 2 -}}
-      {{- if lt $i (sub $title_ct 1) }},
-      {{- end -}}
-      {{- if eq $i (sub $title_ct 2) }} and
-      {{- end }}
-    {{ end -}}
-{{- end -}}
-at {{ .Params.author.institution | markdownify }}.
-<span class="text-right" style="margin-left:1em;font-size:80%;">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></span>
-</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="row">
+  <div class="column small-12 medium-8 large-10 medium-push-4 large-push-2">
+    <div style="display:table-cell;height:200px;vertical-align:middle;">
+        <b>{{ .Params.author.name | markdownify }}</b> is
+        {{- $title_ct := len .Params.author.titles }}
+        {{- range $i, $t := .Params.author.titles }}
+          {{ $t | markdownify -}}
+            {{- if gt $title_ct 2 -}}
+              {{- if lt $i (sub $title_ct 1) }},
+              {{- end -}}
+              {{- if eq $i (sub $title_ct 2) }} and
+              {{- end }}
+            {{ end -}}
+        {{- end -}}
+        at {{ .Params.author.institution | markdownify }}.
+        <span class="text-right" style="margin-left:1em;font-size:80%;">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></span>
+    </div>
+  </div>
+  <div class="column small-12 medium-4 large-2 medium-pull-8 large-pull-10 small-text-center medium-text-right">
+    <div style="display:table-cell;height:200px;vertical-align:middle;">
+      <img class="avatar" src="/img/{{ .Params.author.head_shot }}" style="vertical-align:middle;"/>
+    </div>
+  </div>
 </div>
+<div class="show-for-small-only"><hr/></div>
