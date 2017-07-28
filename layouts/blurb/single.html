@@ -1,0 +1,7 @@
+<blockquote>
+{{ .Content }}
+<span style="text-align:right;">---{{ .Params.title | markdownify -}}
+{{- range .Params.affiliation -}},
+  <br/>{{ . | markdownify}}
+{{- end -}}.</span>
+</blockquote>

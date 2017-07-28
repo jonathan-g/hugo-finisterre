@@ -10,8 +10,8 @@
 {{ define "main" }}
 
 <div class="wrapper">
-  <div class="units-row">
-    <div class="unit-centered unit-80">
+  <div class="row">
+    <div class="column small-10 small-offset-1">
     <article class="article" itemscope itemtype="http://schema.org/Article">
       {{ if .Params.image }}
       <img src="{{ $.Site.BaseURL }}img/{{ .Params.image }}" class="article-banner" itemprop="image">

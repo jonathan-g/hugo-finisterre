@@ -1,0 +1,7 @@
+<div class="post-metadata">
+  <span class="post-date">
+  <time datetime="{{ $.Date }}" itemprop="datePublished">{{ $.Date.Format (default "2 January 2006" (index $.Site.Params "date_format")) }}</time>
+  {{- partial "post_fmt/author" (dict "dot" . "pre_comma" 1 "post_comma" 0 "force" 0) -}}
+  </span>
+  <span><a href="{{ .RelPermalink }}" target="_blank">&rarr; Read more</a></span>
+</div>

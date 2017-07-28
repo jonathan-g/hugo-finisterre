@@ -803,6 +803,10 @@ a.nav-bar.more:hover {
     vertical-align: -0.4em;
   }
 
+  blockquote:after {
+    content: no-close-quote;
+  }
+
   div.image-credit {
     text-align: right;
     margin-top:0;

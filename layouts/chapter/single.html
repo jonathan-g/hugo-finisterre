@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12 medium-10 large-8 small-centered">
+  <h1>Chapter {{ .Params.chapter }}, "{{ .Params.title }}"</h1>
+    <div class="post-body" itemprop="articleBody">
+    {{ .Content }}
+    </div>
+  </article>
+
+  <ul class="pagination" role="navigation" aria-label="Pagination">
+    {{ if .NextInSection }}
+    <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}">&laquo; <em>Previous<span class="show-for-sr"> page</span></em>: Chapter {{ .NextInSection.Params.chapter }}, "{{ .NextInSection.Title }}"</a></li>
+    {{ end }}
+    {{ if .PrevInSection }}
+    <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}"><em>Next<span class="show-for-sr"> page</span></em>: Chapter {{ .PrevInSection.Params.chapter }}, "{{ .PrevInSection.Title }}&nbsp;&raquo;</a></li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

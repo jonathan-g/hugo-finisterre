@@ -1,0 +1,38 @@
+{{- if isset .Params "book" -}}
+{{- $.Scratch.Set "booktitle" (.Params.book.title | default $.Site.Params.book.title) -}}
+{{- $.Scratch.Set "publisher" (.Params.book.publisher | default $.Site.Params.book.publisher) -}}
+{{- $.Scratch.Set "isbn" (.Params.book.isbn | default $.Site.Params.book.isbn) -}}
+{{- $.Scratch.Set "bookyear" (.Params.book.year | default $.Site.Params.book.year) -}}
+{{- else -}}
+{{- $.Scratch.Set "booktitle" $.Site.Params.book.title -}}
+{{- $.Scratch.Set "publisher" $.Site.Params.book.publisher -}}
+{{- $.Scratch.Set "isbn" $.Site.Params.book.isbn -}}
+{{- $.Scratch.Set "bookyear" $.Site.Params.book.year -}}
+{{- end -}}
+{{- $booktitle := ($.Scratch.Get "booktitle") -}}
+{{- $publisher := ($.Scratch.Get "publisher") -}}
+{{- $isbn := ($.Scratch.Get "isbn") -}}
+{{- $bookyear := ($.Scratch.Get "bookyear") -}}
+
+<article class="postlist">
+  <article itemscope itemtype="http://schema.org/ScholarlyArticle">
+    <span itemprop="isPartOf" itemscope itemtype="http://schema.org/Book">
+      <meta itemprop="name" content="{{ $booktitle }}"/>
+      <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="{{ $publisher }}"/>
+      </span>
+      <meta itemprop="datepublished" content="{{ $bookyear }}"/>
+      <meta itemprop="isbn" content="{{ $isbn }}"/>
+    </span>
+    <h2>Chapter {{ .Params.chapter }}, "{{ .Params.title }}"</h2>
+
+    {{ if .Truncated }}
+    {{ .Summary }}
+    <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
+    {{- else }}
+    <div itemprop="articleBody">
+    {{ .Content }}
+    </div>
+    {{- end }}
+  </article>
+</article>

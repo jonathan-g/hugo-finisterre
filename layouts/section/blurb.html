@@ -2,10 +2,9 @@
 <!-- news list -->
 <div class="row">
   <div class="column small-12 large-10">
-    {{ $paginator := .Paginate .Data.Pages }}
-    {{ range $paginator.Pages }}
-    {{ partial "news-summary" . }}
-    <div class="show-for-small-only"><hr/></div>
+    {{ $paginator := .Paginate .Data.Pages.ByWeight }}
+    {{ range $paginator.Pages.ByWeight }}
+    {{ .Render "summary" }}
     {{ end }}
     {{ partial "pagination" . }}
   </div>

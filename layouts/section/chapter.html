@@ -1,11 +1,16 @@
 {{ define "main" }}
 <div class="row">
+<div class="column small-12">
+<h1>{{ .Title }}</h1>
+</div>
+</div>
+<div class="row">
   <div class="column small-12 medium-10 medium-offset-1 end large-offset-0 large-3 large-push-9">
-    {{ partial "post-aside" . }}
+    {{ .Content }}
   </div>
   <div class="column small-12 medium-10 medium-offset-1 end large-offset-0 large-8 large-pull-3">
-    {{ $paginator := .Paginate .Data.Pages.ByWeight.Reverse.ByDate.Reverse }}
-    {{ range $paginator.Pages.ByWeight.Reverse.ByDate.Reverse }}
+    {{ $paginator := .Paginate .Data.Pages }}
+    {{ range $paginator.Pages }}
     {{ .Render "summary" }}
     {{ end }}
     {{ partial "pagination" . }}

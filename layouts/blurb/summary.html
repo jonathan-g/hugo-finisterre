@@ -1,0 +1,8 @@
+<blockquote>
+<div style="font-size:120%;font-style:normal;">{{ .Content }}</div>
+<div>&mdash; {{ .Params.title | markdownify -}}
+<span style="font-size:80%;">
+{{- range .Params.affiliation -}},
+  <br/>{{ . | markdownify}}
+{{- end -}}.</span></div>
+</blockquote>

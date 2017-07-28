@@ -1,9 +1,11 @@
 {{ define "main" }}
+<!-- news list -->
 <div class="row">
-  <div class="column small-12">
+  <div class="column small-12 large-10">
     {{ $paginator := .Paginate .Data.Pages }}
     {{ range $paginator.Pages }}
-    {{ partial "post-summary" . -}}
+    {{ .Render "summary" }}
+    <div class="show-for-small-only"><hr/></div>
     {{ end }}
     {{ partial "pagination" . }}
   </div>

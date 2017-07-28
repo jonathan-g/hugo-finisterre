@@ -1,12 +1,12 @@
-<article class="postlist">
-    <article itemscope itemtype="http://schema.org/NewsArticle">
-    <header>
-    <div class="meta"><h4>{{ partial "post_fmt/date" . }}</h4></div>
-      <h2><a href='{{ .Permalink }}'><span itemprop="name headline">{{ .Title }}</span></a></h2>
-    </header>
-    {{ .Summary -}}
-    </article>
-    <footer>
-        <a href='{{ .Permalink }}'><nobr>Read more →</nobr></a>
-    </footer>
+<article itemscope itemtype="http://schema.org/NewsArticle">
+<h2><a href="{{ .RelPermalink }}"><span itemprop="name headline">{{ .Title }}</span></a></h2>
+{{ partial "news-metadata" . | chomp }}
+{{- if .Truncated }}
+  {{ .Summary }}
+  <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
+{{- else }}
+  <div itemprop="articleBody">
+  {{ .Content }}
+  </div>
+{{ end -}}
 </article>
