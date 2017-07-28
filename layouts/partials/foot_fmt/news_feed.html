@@ -1,0 +1,62 @@
+{{- $front_page_img := index .Site.Params "front_page_img" | default "avatar.jpg" -}}
+{{- $posts_title := index .Site.Params "posts_title" | default "Posts" -}}
+{{- $posts_count := index .Site.Params "posts_count" | default 2 -}}
+{{- $news_title  := index .Site.Params "news_title"  | default "News Coverage" -}}
+{{- $news_count  := index .Site.Params "news_count"  | default 3 -}}
+{{- $post_title  := index .Site.Params "post_title"  | default "Blog Posts" -}}
+{{- $post_count  := index .Site.Params "post_count"  | default 3 -}}
+{{- $news_post_count := index .Site.Params "news_post_count" | default 3}}
+{{- $news_current_months := index .Site.Params "news_current_months" | default 2 }}
+{{- if le $news_count 0 -}}
+  {{- $.Scratch.Set "news_count 0" -}}
+{{- else -}}
+  {{- $.Scratch.Set "news_items" (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))) -}}
+  {{- if gt (len ($.Scratch.Get "news_items")) 0 -}}
+    {{- $.Scratch.Set "news_items" (first $news_count ($.Scratch.Get "news_items")) -}}
+    {{- $.Scratch.Set "news_current_count" (len ($.Scratch.Get "news_items")) -}}
+  {{- else -}}
+    {{- $.Scratch.Set "news_items" nil -}}
+    {{- $.Scratch.Set "news_current_count" 0 -}}
+  {{- end -}}
+{{- end -}}
+{{- $news_current_count := ($.Scratch.Get "news_current_count") -}}
+{{- if and (gt $news_current_count 0) (gt $post_count 0) -}}
+  {{- $.Scratch.Set "news_post_title" (delimit (slice $post_title "and" $news_title) " ") -}}
+{{- else -}}
+  {{- if gt $news_current_count 0 -}}
+     {{- $.Scratch.Set "news_post_title" $news_title -}}
+  {{- else -}}
+     {{- $.Scratch.Set "news_post_title" $post_title -}}
+  {{- end -}}
+{{- end -}}
+{{- $news_post_title := $.Scratch.Get "news_post_title" -}}
+<h3>Recent {{ $news_post_title }}</h3>
+<ul class="compact fa-ul">
+  {{- if gt $post_count 0 -}}
+    {{- $.Scratch.Set "post_items" (first $post_count (where (where $.Site.Pages.ByWeight.ByDate "Section" "post") "Params.title" "!=" nil).Reverse)}}
+  {{- else -}}
+    {{- $.Scratch.Set "post_items" nil -}}
+  {{- end -}}
+  {{ range first $news_post_count (sort (sort (union ($.Scratch.Get "news_items") ($.Scratch.Get "post_items")) "Weight") "Date" "desc" ) }}
+    <li><i class="fa-li fa {{if eq .Type "news" }}fa-newspaper-o{{ else }}fa-pencil-square-o{{ end }}"></i>
+    <article itemscope itemtype="http://schema.org/{{ if eq .Type "news" }}NewsArticle{{ else }}BlogPosting{{ end }}" >
+    <span itemprop="name headline">{{ .Title }}</span>
+    {{ if gt $news_post_count 0 -}}
+      {{- if eq .Type "news" }}{{ partial "news-capsule" . }}{{ else }}{{ partial "post-capsule" . }}{{ end -}}
+    {{- else -}}
+      {{- if eq .Type "news" }}{{ partial "news-capsule-long" . }}{{ else }}{{ partial "post-capsule-long" . }}{{ end -}}
+    {{- end -}}
+    </article>
+    </li>
+  {{ end -}}
+</ul>
+<!--
+<footer>
+  <nav>
+  <ul class="menu align-right">
+    <li><a href="/news/" class="nav-bar more">&rarr; more  {{ $news_title }}</a></li>
+    <li><a href="/post/" class="nav-bar more">&rarr; more  {{ $post_title }}</a></li>
+  </ul>
+  </nav>
+</footer>
+-->
