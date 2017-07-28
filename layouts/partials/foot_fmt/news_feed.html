@@ -33,7 +33,7 @@
 <h3>Recent {{ $news_post_title }}</h3>
 <ul class="compact fa-ul">
   {{- if gt $post_count 0 -}}
-    {{- $.Scratch.Set "post_items" (first $post_count (where (where $.Site.Pages.ByWeight.ByDate "Section" "post") "Params.title" "!=" nil).Reverse)}}
+    {{- $.Scratch.Set "post_items" (first $post_count (where (where $.Site.Pages.ByWeight.ByDate "Section" "post") "Params.date" "!=" nil).Reverse)}}
   {{- else -}}
     {{- $.Scratch.Set "post_items" nil -}}
   {{- end -}}

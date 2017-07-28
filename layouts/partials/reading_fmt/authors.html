@@ -1,0 +1,13 @@
+{{ if isset .Params "authors" -}}
+  {{- $author_ct := len .Params.authors -}}
+  {{- range $i, $a := .Params.authors -}}
+    <span itemprop="author">{{ $a }}</span>
+    {{- if lt $i (sub $author_ct 2) }},
+    {{ else -}}
+      {{- if eq $i (sub $author_ct 2) -}}
+        {{- if gt $author_ct 2 }},{{ end }}
+        and
+      {{ end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}},

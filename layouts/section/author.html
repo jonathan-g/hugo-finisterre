@@ -1,0 +1,11 @@
+{{ define "main" }}
+<!-- author list -->
+<div class="row">
+  <div class="column small-12 medium-10 medium-offset-1 large-8 large-offset-2">
+    {{ $paginator := .Paginate .Data.Pages.ByWeight }}
+    {{ range $paginator.Pages.ByWeight }}
+    {{ .Render "li" }}
+    {{ end }}
+  </div>
+</div>
+{{ end }}

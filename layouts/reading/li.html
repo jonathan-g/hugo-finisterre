@@ -1,0 +1,14 @@
+<article itemscope itemtype="http://schema.org/Book">
+<div>
+
+<span>{{ partial "reading_fmt/authors" . }}</span>
+<i>{{ .Title }}</i>
+{{- if isset .Params "edition" }},
+{{ .Params.edition -}}
+{{- end }}.
+({{ .Params.publisher }}, {{ .Params.pub_year }}).
+{{- if false -}}
+  <span class="text-right" style="margin-left:1em;font-size:80%;">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></span>
+{{- end -}}
+</div>
+</article>

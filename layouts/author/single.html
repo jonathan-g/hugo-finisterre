@@ -1,0 +1,65 @@
+{{ define "main" }}
+<div class="row">
+  <div class="column small-12 large-10 large-offset-2">
+  <h1>{{ .Params.author.name }}</h1>
+  </div>
+  <div class="column small-12 medium-8 large-6 large-offset-2">
+    <div>
+    <figure class="image-left">
+    <img class="avatar" src="/img/{{ .Params.author.head_shot }}"/>
+    </figure>
+      <p><b>{{ .Params.author.name | markdownify }}</b> is
+      {{- $title_ct := len .Params.author.titles }}
+      {{- range $i, $t := .Params.author.titles }}
+        {{ $t | markdownify -}}
+          {{- if gt $title_ct 2 -}}
+            {{- if lt $i (sub $title_ct 1) }},
+            {{- end -}}
+            {{- if eq $i (sub $title_ct 2) }} and
+            {{- end }}
+          {{ end -}}
+      {{- end -}}
+      at {{ .Params.author.institution | markdownify }}.
+      </p>
+        {{ .Content | markdownify }}
+    </div>
+  </div>
+  <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
+  <div class="column small-12 medium-4">
+    <h3 id="contact">Contact</h3>
+    <ul class="fa-ul">
+      <li><i class="fa-li fa fa-university" style="padding-top:3px;"></i>
+      {{- range .Params.author.address }}
+        {{ . | markdownify -}}
+      {{ end }}
+      </li>
+      {{ range sort .Params.author.social "priority" -}}
+        <li>
+        {{- if .icon -}}
+          <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
+        {{- end -}}
+        {{- if .site -}}{{.site}} {{ end -}}
+        {{- if .link -}}
+          <a href="{{ .link }}" {{ if hasPrefix .link "http"}}target="_blank"{{ end }}>{{ .text }}</a>
+        {{- else -}}
+          {{- .text -}}
+        {{- end -}}
+        {{ if .on_site }} on {{ .on_site }}{{ end -}}
+        </li>
+      {{ end -}}
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="column small-12 large-10 large-offset-2">
+    <ul class="pagination" role="navigation" aria-label="Pagination">
+      {{ if .NextInSection }}
+      <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}">&laquo; <em>Previous<span class="show-for-sr"> page</span></em>: {{ .NextInSection.Title }}</a></li>
+      {{ end }}
+      {{ if .PrevInSection }}
+      <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}"><em>Next<span class="show-for-sr"> page</span></em>: {{ .PrevInSection.Title }}&nbsp;&raquo;</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,27 @@
+<div>
+<table style="border:0;">
+<tbody style="border:0;">
+<tr style="vertical-align:middle;border:0;">
+<td style="vertical-align:middle;border:0;">
+<img class="avatar" src="/img/{{ .Params.author.head_shot }}"/>
+</td>
+<td style="vertical-align:middle;border:0;">
+<p><b>{{ .Params.author.name | markdownify }}</b> is
+{{- $title_ct := len .Params.author.titles }}
+{{- range $i, $t := .Params.author.titles }}
+  {{ $t | markdownify -}}
+    {{- if gt $title_ct 2 -}}
+      {{- if lt $i (sub $title_ct 1) }},
+      {{- end -}}
+      {{- if eq $i (sub $title_ct 2) }} and
+      {{- end }}
+    {{ end -}}
+{{- end -}}
+at {{ .Params.author.institution | markdownify }}.
+<span class="text-right" style="margin-left:1em;font-size:80%;">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></span>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

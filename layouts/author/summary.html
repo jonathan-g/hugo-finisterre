@@ -28,7 +28,7 @@
 
     {{ if .Truncated }}
     {{ .Summary }}
-    <p class="text-right">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></p>
+    <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
     {{- else }}
     <div itemprop="articleBody">
     {{ .Content }}
