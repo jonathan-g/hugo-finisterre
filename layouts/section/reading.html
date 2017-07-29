@@ -10,13 +10,15 @@
   </div>
   <div class="show-for-small-only"><hr/></div>
   <div class="column small-12 medium-8 medium-pull-4 large-6 large-pull-4">
-    {{ $paginator := .Paginate .Data.Pages.ByWeight }}
+    {{ range $rc, $tax := $.Site.Taxonomies.r_cats }}
+    <h3>{{ $rc }}</h3>
     <ul>
-    {{ range $paginator.Pages.ByWeight }}
+    {{ range $tax.Pages.ByWeight }}
     <li>{{ .Render "li" }}</li>
     {{ end }}
     </ul>
-    {{ partial "pagination" . }}
+    {{ end }}
+    {{/* partial "pagination" . */}}
   </div>
 </div>
 {{ end }}
