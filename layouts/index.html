@@ -15,7 +15,7 @@
 {{- if le $news_count 0 -}}
   {{- $.Scratch.Set "news_count 0" -}}
 {{- else -}}
-  {{- $.Scratch.Set "news_items" (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))) -}}
+  {{- $.Scratch.Set "news_items" (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))).ByWeight -}}
   {{- if gt (len ($.Scratch.Get "news_items")) 0 -}}
     {{- $.Scratch.Set "news_items" (first $news_count ($.Scratch.Get "news_items")) -}}
     {{- $.Scratch.Set "news_current_count" (len ($.Scratch.Get "news_items")) -}}
