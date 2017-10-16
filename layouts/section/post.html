@@ -8,7 +8,7 @@
     {{ range $paginator.Pages.ByWeight.Reverse.ByDate.Reverse }}
     {{ .Render "summary" }}
     {{ end }}
-    {{ partial "pagination" . }}
+    {{ partial "pagination_blog" . }}
   </div>
 </div>
 {{ end }}

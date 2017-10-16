@@ -1,0 +1,11 @@
+<article class="postlist">
+    <h2>{{ .Params.title }}</h2>
+    {{ if .Truncated }}
+    {{ .Summary }}
+    <p class="text-right">&rarr; <a href="{{ .RelPermalink }}">Read More…</a></p>
+    {{- else }}
+    <div itemprop="articleBody">
+    {{ .Content }}
+    </div>
+    {{- end }}
+</article>
