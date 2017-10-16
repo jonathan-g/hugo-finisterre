@@ -10,13 +10,16 @@
   </div>
   <div class="show-for-small-only"><hr/></div>
   <div class="column small-12 medium-8 medium-pull-4 large-6 large-pull-4">
-    {{ $paginator := .Paginate .Data.Pages.ByWeight }}
-    <ul>
-    {{ range $paginator.Pages.ByWeight }}
-    <li>{{ .Render "li" }}</li>
+    {{ $paginator := .Paginate (.Data.Pages.ByWeight.GroupByParam "r_cat_weight") }}
+    {{ range $paginator.PageGroups }}
+      <h3>{{ (index .Pages 0).Params.r_cat }}</h3>
+      <ul style="margin-bottom:1em;">
+      {{ range .Pages.ByWeight }}
+        <li>{{ .Render "li" }}</li>
+      {{ end }}
+      </ul>
     {{ end }}
-    </ul>
-    {{ partial "pagination" . }}
+    {{ partial "group_pagination" . }}
   </div>
 </div>
 {{ end }}
