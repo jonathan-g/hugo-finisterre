@@ -1,11 +1,11 @@
 {{ define "main" }}
 {{- $front_page_img := index .Site.Params "front_page_img" | default "avatar.jpg" -}}
 <div class="row">
-<div class="column small-12 medium-6 medium-push-6">
+<div class="column small-12 medium-5 medium-push-7 large-4 large-push-8">
 <img src="{{ $.Site.BaseURL }}img/{{ $front_page_img }}" style="width:30rem;;"/>
 </div>
 <div class="show-for-small-only"><hr style="padding-top:10px;"/></div>
-<div class="column small-12 medium-6 medium-pull-6" style="text-align:right;">
+<div class="column small-12 medium-7 medium-pull-5 large-8 large-pull-4" style="text-align:right;">
   <span style="text-align:left;" class="compact shrink">
   {{ with $.Site.GetPage "page" "book_abstract.md" }}{{ .Content | markdownify }}{{ else }}<h1>Blurb goes here</h1><p>foo foo foo foo foo foo foo foo foo foo foo foo</p>{{ end }}
   </span>
