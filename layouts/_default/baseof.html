@@ -22,6 +22,7 @@
     <meta itemprop="about" itemscope itemtype="http://schema.org/{{ $site_subject_type }}" itemref="site-about"/>
     <meta itemprop="name" content="{{ $site_subject_name }}" id="site-about"/>
     {{ partial "typekit.html" . }}
+    {{ partial "font-awesome-cdn.html" .}}
     <!--
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/foundation.min.css">
     -->
@@ -30,7 +31,6 @@
     <!--
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css">
     -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/academicons.min.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/finisterre.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/site.css">
