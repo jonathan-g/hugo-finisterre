@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "preprint_url" }}
+<a href="{{ $.Params.preprint_url | safeHTML }}" target="_blank" class="badge badge-small badge-blue">Preprint</a>
+{{ end -}}

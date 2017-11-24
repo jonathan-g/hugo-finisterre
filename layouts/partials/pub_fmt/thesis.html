@@ -7,6 +7,9 @@
 {{- if gt .pdf 0 }}
 {{ partial "pub_fmt/pdf" . -}}
 {{- end }}
+{{- if gt .preprint 0 }}
+{{ partial "pub_fmt/preprint_link" . -}}
+{{- end }}
 Thesis
 {{- if isset $.Params "author" -}}
   {{- $author_names := apply (apply $.Params.author "partial" "pub_fmt/author" ".") "chomp" "." -}}
