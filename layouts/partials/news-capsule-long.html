@@ -3,11 +3,17 @@
     {{ partial "post_fmt/date" (dict "dot" .) | chomp }}
     {{- partial "post_fmt/author" (dict "dot" . "pre_comma" 1 "post_comma" 1 "force" 1) | chomp -}}
     {{- partial "post_fmt/publication" (dict "dot" .) | chomp -}}
-  <span><a href="{{ .RelPermalink }}" target="_blank">&rarr; Read more</a></span>
+    <span><a href="{{ .RelPermalink }}" target="_blank">
+    {{- if not .Truncated}}&rarr; Read more{{- end -}}
+    </a></span>
   </span>
 </div>
 {{- if .Truncated }}
-  {{ .Summary }}
+  {{ if isset .Params "abstract" -}}
+    {{ .Params.abstract | markdownify | safeHTML }}
+  {{- else -}}
+    {{ .Summary | replaceRE "<p></p>" "" | chomp }}
+  {{- end }}
   <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
 {{- else }}
   <div itemprop="articleBody">

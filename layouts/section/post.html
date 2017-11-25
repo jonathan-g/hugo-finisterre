@@ -6,7 +6,7 @@
   <div class="column small-12 medium-10 medium-offset-1 end large-offset-0 large-8 large-pull-3">
     {{ $paginator := .Paginate .Data.Pages.ByWeight.Reverse.ByDate.Reverse }}
     {{ range $paginator.Pages.ByWeight.Reverse.ByDate.Reverse }}
-    {{ partial "post-summary" . }}
+      {{ partial "post-summary" . }}
     {{ end }}
     {{ partial "pagination" . }}
   </div>

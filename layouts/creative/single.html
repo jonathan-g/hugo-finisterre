@@ -13,7 +13,7 @@
   <div class="column small-12 medium-10 medium-offset-1  large-8 large-offset-2 end">
   <article class="pub" itemscope itemtype="http://schema.org/CreativeWork">
     <h1>{{ .Title | markdownify }}</h1>
-    <ul style="list-style-position:inside;margin-bottom:1em;">
+    <ul class="inside-list">
     {{- range .Params.writing_credit }}
     <li>{{. | markdownify }}
     </li>
@@ -22,7 +22,7 @@
     {{- partial "post_fmt/banner" (dict "dot" . "rel_path" "." ) -}}
     {{- if isset .Params "performances" -}}
       <h3>{{ $performance_title }}:</h3>
-      <ul style="list-style-position:inside;margin-bottom:1em;">
+      <ul class="inside-list">
       {{- range $performance := .Params.performances -}}
         <li><b>{{ index $performance "date" | markdownify }}</b>, {{ index $performance "description" | markdownify }}.
         {{- if ne (index $performance "credits") nil }}

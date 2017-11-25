@@ -148,8 +148,11 @@ button {
 
 
  .nav-bar {
-     font-family: 'ff-meta-serif-sc-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
-     text-transform: uppercase;
+     font-family: 'ff-meta-serif-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+     text-transform: capitalize;
+     font-variant: small-caps;
+     font-style: normal;
+     font-weight: normal;
  }
 
 .nav-bar.more {
@@ -266,9 +269,10 @@ a.nav-bar.more:hover {
  	font-style: italic;
  }
  h3,h4 {
-   font-family: 'ff-meta-serif-sc-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+   font-family: 'ff-meta-serif-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
    text-transform: lowercase;
    font-style: normal;
+   font-variant: small-caps;
  }
  h3 {
    font-weight: bold;
@@ -287,7 +291,13 @@ a.nav-bar.more:hover {
    margin-bottom: 0.25em;
  }
 
+sup, sub {
+  font-size:50%;
+}
 
+sup.pub-title {
+  vertical-align: top;
+}
 
  @media screen and (min-width: 40em) {
      h1 { font-size: 1.5rem; }
@@ -297,6 +307,25 @@ a.nav-bar.more:hover {
      h5 { font-size: 1.0625rem; }
      h6 { font-size: 1rem; }
  }
+
+ ul.inside-list,
+ ol.inside-list {
+   list-style-position:inside;
+   margin-bottom:1em;
+ }
+
+i.teaching-item {
+  color:#03396c;
+  font-size:80%;
+  padding-top:6px;
+}
+
+footer.footer {
+  display:flex;
+  width:100%;
+  text-align:center;
+  align-items:center;
+}
 
  /* Code highlighting: Inline code.  */
  code
@@ -415,7 +444,8 @@ a.nav-bar.more:hover {
 
  /* Publication links on front page and on publication pages. */
 
-.button.coming-soon {
+.button.coming-soon,
+.button.in-press {
   background-color: #f0f000;
   border: 0;
   padding: 3px 5px;
@@ -427,9 +457,14 @@ a.nav-bar.more:hover {
   margin: 0 0 0.5rem 0;
 }
 
-.button.coming-soon:hover {
+.button.coming-soon:hover
+.button.in-press:hover {
     color: #de2c3b;
     transition: none;
+}
+
+.button.in-press {
+  text-transform: uppercasae;
 }
 
 .button.now-on {
@@ -588,7 +623,7 @@ a.nav-bar.more:hover {
 
  .post-metadata {
      color: #606090;
-     margin-bottom: 1rem;
+     margin-bottom: 0.25rem;
      font-size: small;
  }
 
@@ -712,7 +747,11 @@ a.nav-bar.more:hover {
  .badge-black,
  .badge-blue,
  .badge-red,
- .badge-green {
+ .badge-green,
+ .badge-doi,
+ .badge-preprint,
+ .badge-pdf,
+  {
    color: #ffffff;
  }
  .label-black,
@@ -772,13 +811,31 @@ a.nav-bar.more:hover {
  .label.now-on,
  .badge.now-on {
    background: #a0f0a0;
+   text-transform: uppercase;
   }
-
  .label.coming-soon,
- .badge.coming-soon {
+ .badge.coming-soon,
+ .label.in-press,
+ .badge.in-press {
    background: #f0f000;
+   text-transform: uppercase;
   }
-
+  .label.pdf,
+  .badge.pdf {
+   background: #BD666D;
+  }
+  .label.doi,
+  .badge.doi,
+  .label.preprint-link,
+  .badge.preprint-link {
+    background: #4673B8;
+  }
+  .label.abstract-link,
+  .badge.abstract-link,
+  .label.amazon,
+  .badge.amazon {
+    background: #e0e3e5;
+  }
 
   blockquote {
     color: #36454f;

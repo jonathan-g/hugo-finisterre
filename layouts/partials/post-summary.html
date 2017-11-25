@@ -1,12 +1,16 @@
 <article itemscope itemtype="http://schema.org/BlogPosting">
 <h2><a href="{{ .RelPermalink }}"><span itemprop="name headline">{{ .Title }}</span></a></h2>
 {{ partial "post-metadata" . }}
-{{ if .Truncated }}
-{{ .Summary }}
-<p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
+{{ if .Truncated -}}
+  {{- if isset .Params "abstract" -}}
+    {{- .Params.abstract | markdownify | safeHTML -}}
+  {{- else -}}
+    {{- .Summary -}}
+  {{- end }}
+  <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
 {{- else }}
-<div itemprop="articleBody">
-{{ .Content }}
-</div>
+  <div itemprop="articleBody">
+  {{ .Content }}
+  </div>
 {{- end }}
 </article>
