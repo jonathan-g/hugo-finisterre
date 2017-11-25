@@ -239,7 +239,10 @@ a.nav-bar.more:hover {
  a {
      border-bottom: 1px dotted #5073F0;
      border-radius: 3px;
+     color: #24648f;
+     /*
      color: #101730;
+     */
      /*
      color: #2e81b8;
      */

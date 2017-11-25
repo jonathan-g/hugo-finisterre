@@ -98,13 +98,13 @@
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
         CommonHTML: {
-          scale: 80,
+          scale: 90,
           mtextFontInherit: true
         },
         "HTML-CSS": {
           preferredFont: "STIX",
           webFont: "Asana-Math",
-          scale: 80
+          scale: 90
         }
         {{- if and (isset .Site.Params "mhchem") (eq .Site.Params.mhchem true) }},
         TeX: {
@@ -113,10 +113,11 @@
         {{- end }}
       });
     </script>
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML">
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML">
     </script>
     {{ end }}
 
-
+    {{ block "pagescripts" . }}
+    {{ end }}
   </body>
 </html>

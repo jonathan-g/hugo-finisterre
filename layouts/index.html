@@ -41,7 +41,7 @@
   {{- $.Scratch.Set "pub_teach_col_class" "small-12 medium-6" -}}
 {{- end -}}
 {{- $pub_teach_col_class := ($.Scratch.Get "pub_teach_col_class") -}}
-<div class="row">
+<div class="row" id="whats-new">
 {{- if or (gt $news_current_count 0) (gt $post_count 0) -}}
     <div class="column small-12 medium-7 large-6">
     <h3>Recent {{ $news_post_title }}</h3>
@@ -107,4 +107,23 @@
   </footer>
 
 </div>
+{{ end }}
+{{ define "pagescripts" }}
+    <script type="text/javascript" >
+    function arrange_rows(event, newSize, oldSize) {
+      var whats_new = $("#whats-new");
+      var basic_info = $("#basic-info");
+      if (!Foundation.MediaQuery.atLeast("medium")) {
+        rowx = whats_new.detach();
+        rowx.insertAfter(basic_info);
+      } else {
+        rowx = basic_info.detach();
+        rowx.insertAfter(whats_new);
+      }
+    };
+
+    arrange_rows();
+
+    $(window).on('changed.zf.mediaquery', arrange_rows);
+    </script>
 {{ end }}
