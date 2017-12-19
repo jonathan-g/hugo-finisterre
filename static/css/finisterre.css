@@ -825,12 +825,14 @@ footer.footer {
   }
   .label.pdf,
   .badge.pdf {
+   color: #FFFFFF;
    background: #BD666D;
   }
   .label.doi,
   .badge.doi,
   .label.preprint-link,
   .badge.preprint-link {
+    color: #FFFFFF;
     background: #4673B8;
   }
   .label.abstract-link,
