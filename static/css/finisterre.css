@@ -148,7 +148,8 @@ button {
 
 
  .nav-bar {
-     font-family: 'ff-meta-serif-sc-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+     font-family: 'ff-meta-serif-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+     font-variant: small-caps;
      text-transform: uppercase;
  }
 
@@ -266,7 +267,8 @@ a.nav-bar.more:hover {
  	font-style: italic;
  }
  h3,h4 {
-   font-family: 'ff-meta-serif-sc-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+   font-family: 'ff-meta-serif-web-pro', 'Trebuchet MS', 'Helvetica Neue', Tahoma;
+   font-variant: small-caps;
    text-transform: lowercase;
    font-style: normal;
  }
