@@ -1,4 +1,5 @@
 {{- $ := .dot -}}
+{{- if .pre_comma -}}, {{ end -}}
 {{- if isset $.Params "pub_link" -}}
   <a href="{{ $.Params.pub_link }}">
 {{- end -}}
