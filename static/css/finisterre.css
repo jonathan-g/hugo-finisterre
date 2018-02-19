@@ -326,7 +326,8 @@ i.teaching-item {
 p.caption {
   background-color: #e2edf5;
   padding-top:0.25rem;
-  padding-bottom:1rem;
+  padding-bottom:0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 footer.footer {
