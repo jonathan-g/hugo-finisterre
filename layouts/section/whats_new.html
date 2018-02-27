@@ -86,23 +86,24 @@
 	      <nav>
 	      <ul class="menu align-right">
 		      <li><a href="/publications/" class="nav-bar more">&rarr; more  {{ $pubs_title }}</a>
+		    </ul>
 	      </nav>
 	    </footer>
 		</div>
     <div class="show-for-small-only"><hr/></div>
 		<div class="column {{ $teach_col_class }}">
-			<h3>Current Teaching</h3>
-			<ul>
-				{{ range first 3 (where (where $.Site.Pages.ByDate "Section" "teaching") "Params.date" "!=" nil).Reverse }}
-					{{ partial "teach-summary" . }}
-				{{ end }}
-			</ul>
-			<footer>
-	      <nav>
-	      <ul class="menu align-right">
-		      <li><a href="/teaching/" class="nav-bar more">&rarr; more  {{ $teach_title }}</a>
-	      </nav>
-	    </footer>
+      <h3>Recent {{ $teach_title }}</h3>
+      <ul class="compact fa-ul">
+        {{ range first $teach_count (where (where .Data.Pages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse }}
+        <li>{{ partial "teach-summary" . }}</li>
+        {{ end }}
+      </ul>
+      <footer>
+        <nav>
+        <ul class="menu align-right">
+          <li><a href="/teaching/" class="nav-bar more">&rarr; more  {{ $teach_title }}</a>
+        </nav>
+      </footer>
 		</div>
 	</div>
 </div>
