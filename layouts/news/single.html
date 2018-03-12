@@ -43,16 +43,19 @@
       <meta itemprop="datePublished" content="{{ .Date.Format "2006-01-02" }}">
       <meta itemprop="url" content="{{ .Permalink }}">
     </article>
-
-    <ul class="pagination" role="navigation" aria-label="Pagination">
-      {{ if .PrevInSection }}
-      <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}">&laquo; <em>Previous<span class="show-for-sr"> page</span></em>: {{ .PrevInSection.Title }}</a></li>
-      {{ end }}
-      {{ if .NextInSection }}
-      <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}"><em>Next<span class="show-for-sr"> page</span></em>: {{ .NextInSection.Title }}&nbsp;&raquo;</a></li>
-      {{ end }}
-    </ul>
-
+    <div class="row">
+      <div class="column small-12 medium-8 medium-offset-4 large-10 large-offset-2">
+        <hr/>
+        <ul class="pagination" role="navigation" aria-label="Pagination">
+          {{ if .PrevInSection }}
+          <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}">&laquo; <em>Previous<span class="show-for-sr"> page</span></em>: {{ .PrevInSection.Title }}</a></li>
+          {{ end }}
+          {{ if .NextInSection }}
+          <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}"><em>Next<span class="show-for-sr"> page</span></em>: {{ .NextInSection.Title }}&nbsp;&raquo;</a></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
     <!-- FIXME <a href="/post/archives/">All Posts by Date</a> &middot; <a href="/categories/">All Posts by Category</a> -->
   </div>
 </div>
