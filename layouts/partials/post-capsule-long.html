@@ -11,7 +11,7 @@
   {{ if isset .Params "abstract" -}}
     {{ .Params.abstract | markdownify | safeHTML }}
   {{- else -}}
-    {{ .Summary | replaceRE "<p></p>" "" | chomp }}
+    {{ .Summary | replaceRE "<p></p>" "" | chomp | safeHTML }}
   {{- end }}
   <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
 {{- else }}
