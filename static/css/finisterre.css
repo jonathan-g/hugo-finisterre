@@ -761,6 +761,7 @@ footer.footer {
  .badge-red,
  .badge-green,
  .badge-doi,
+ .badge-url,
  .badge-preprint,
  .badge-pdf,
   {
@@ -839,6 +840,8 @@ footer.footer {
   }
   .label.doi,
   .badge.doi,
+  .label.url,
+  .badge.url,
   .label.preprint-link,
   .badge.preprint-link {
     color: #FFFFFF;
