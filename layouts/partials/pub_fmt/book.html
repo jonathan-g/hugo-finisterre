@@ -27,5 +27,8 @@
 {{- if gt .meta_doi 0 }}
 {{- partial "pub_fmt/meta_doi" . | chomp -}}
 {{- end -}}
+{{- if gt .meta_pub_url 0 -}}
+{{- partial "pub_fmt/meta_url" . | chomp -}}
+{{- end -}}
 <time datetime="{{ $.Date }}" itemprop="datePublished" content="{{ $.Date.Format (default "2006-01-02" (index $.Site.Params "date_format")) }}"></time>
 </article>
