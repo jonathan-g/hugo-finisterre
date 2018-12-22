@@ -1,0 +1,13 @@
+{{ define "main" }}
+<!-- news list -->
+<div class="row">
+  <div class="column small-12 large-10">
+    {{ $paginator := .Paginate .Data.Pages.ByWeight.Reverse.ByDate.Reverse }}
+    {{ range $paginator.Pages.ByWeight.Reverse.ByDate.Reverse }}
+    {{ .Render "summary" }}
+    <div class="show-for-small-only"><hr/></div>
+    {{ end }}
+    {{ partial "pagination_blog" . }}
+  </div>
+</div>
+{{ end }}

@@ -53,19 +53,25 @@
 	  </div>
 
 	  <!-- The top bar is used for medium and up.  -->
-	    <div class="top-bar" id="site-menu" >
+	    <div class="top-bar stacked-for-medium" id="site-menu" >
 	      <div class="top-bar-title show-for-medium site-title">
 		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
 	      </div>
 	      <div class="top-bar-left">
 		<ul class="menu vertical medium-horizontal">
 		  {{ $currentNode := . }}
-		  {{ range .Site.Menus.main }}
+		  {{ range .Site.Menus.news }}
 		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name }}</a></li>
 		  {{ end }}
 		</ul>
 	      </div>
 	      <div class="top-bar-right show-for-medium">
+		<ul class="menu vertical medium-horizontal">
+		  {{ $currentNode := . }}
+		  {{ range .Site.Menus.main }}
+		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name }}</a></li>
+		  {{ end }}
+		</ul>
 		{{ block "top-bar-right" . }}
 		{{ end }}
 	      </div>
