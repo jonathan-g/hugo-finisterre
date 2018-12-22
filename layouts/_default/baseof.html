@@ -53,25 +53,43 @@
 	  </div>
 
 	  <!-- The top bar is used for medium and up.  -->
-	    <div class="top-bar stacked-for-medium" id="site-menu" >
+	    <div class="top-bar" id="site-menu" >
 	      <div class="top-bar-title show-for-medium site-title">
 		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
 	      </div>
 	      <div class="top-bar-left">
-		<ul class="menu vertical medium-horizontal">
+		<ul class="menu vertical medium-horizontal hide-for-medium-only">
 		  {{ $currentNode := . }}
-		  {{ range .Site.Menus.news }}
-		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name }}</a></li>
-		  {{ end }}
+		  {{ range .Site.Menus.main -}}
+  		  {{ if .HasChildren -}}
+    		  {{- range .Children }}
+    		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name | safeHTML }}</a></li>
+    		  {{ end -}}
+  		  {{- else }}
+    		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name | safeHTML }}</a></li>
+  		  {{ end -}}
+		  {{- end }}
 		</ul>
-	      </div>
-	      <div class="top-bar-right show-for-medium">
-		<ul class="menu vertical medium-horizontal">
+	  <ul class="dropdown menu show-for-medium-only" data-dropdown-menu style="hyphens:manual;">
 		  {{ $currentNode := . }}
 		  {{ range .Site.Menus.main }}
-		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name }}</a></li>
-		  {{ end }}
-		</ul>
+  		  {{ if .URL }}
+    		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name | safeHTML }}</a></li>
+      	{{ else }}
+        	{{ if .HasChildren }}
+      		  <li><a href="#">{{ .Name }}</a>
+        		  <ul class="menu">
+        		  {{ range .Children }}
+          		  <li><a href="{{ .URL }}" foo="{{ .URL }}" bar="{{ .}}">{{ .Name | safeHTML }}</a></li>
+        		  {{ end }}
+        		  </ul>
+      		  </li>
+      		{{ end -}}
+      	{{- end }}
+      {{- end }}
+	  </ul>
+	      </div>
+	      <div class="top-bar-right show-for-medium">
 		{{ block "top-bar-right" . }}
 		{{ end }}
 	      </div>
