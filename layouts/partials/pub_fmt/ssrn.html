@@ -1,0 +1,7 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "ssrn_id" }}
+<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id={{ $.Params.ssrn_id | safeHTML }}" target="_blank" class="badge badge-small ssrn">SSRN</a>
+  {{- if eq .nomicrodata 0 }}
+    <meta itemprop="sameAs" content="https://papers.ssrn.com/sol3/papers.cfm?abstract_id={{ $.Params.doi | safeHTML }}"/>
+  {{- end -}}
+{{ end -}}

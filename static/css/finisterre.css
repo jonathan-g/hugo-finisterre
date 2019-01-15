@@ -761,6 +761,7 @@ footer.footer {
  .badge-red,
  .badge-green,
  .badge-doi,
+ .badge-ssrn,
  .badge-url,
  .badge-preprint,
  .badge-pdf,
@@ -840,6 +841,8 @@ footer.footer {
   }
   .label.doi,
   .badge.doi,
+  .label.ssrn,
+  .badge.ssrn,
   .label.url,
   .badge.url,
   .label.preprint-link,
@@ -847,10 +850,15 @@ footer.footer {
     color: #FFFFFF;
     background: #4673B8;
   }
-  .label.abstract-link,
-  .badge.abstract-link,
+
   .label.amazon,
   .badge.amazon {
+    background: #febd69;
+    color: black;
+  }
+
+  .label.abstract-link,
+  .badge.abstract-link {
     background: #e0e3e5;
   }
 
