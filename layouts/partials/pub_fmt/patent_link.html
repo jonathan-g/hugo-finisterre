@@ -1,0 +1,5 @@
+{{- $ := .dot -}}
+{{- if isset $.Params "patent_num" }}
+  {{ if true -}}<i class="far fa-file-certificate"></i> {{ end -}}
+    <a href="https://patents.google.com/patent/US{{ $.Params.patent_num | safeHTML }}/" target="_blank" class="badge badge-small patent">Patent</a>
+{{ end -}}
