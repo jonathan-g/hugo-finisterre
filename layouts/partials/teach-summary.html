@@ -1,18 +1,18 @@
 {{- if ge .Date.Unix now.Unix -}}
   {{ if le .Date.Unix (add now.Unix 7776000) }}
-  	<li><i class="fa-li fa fa-mortar-board fa-fw teaching-item"></i><a href="{{ .Permalink }}">
+  	<li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item"></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "comingsoon.html" . }}
   	</li>
   {{- else -}}
-  	<li><i class="fa-li fa fa-mortar-board fa-fw teaching-item"></i><a href="{{ .Permalink }}">
+  	<li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item"></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "comingsoon.html" . }}
   	</li>
   {{ end -}}
 {{- else -}}
   {{- if  le now.Unix (time .Params.enddate).Unix }}
-  	<li><i class="fa-li fa fa-mortar-board fa-fw teaching-item" ></i><a href="{{ .Permalink }}">
+  	<li><i class="fa-li fas {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item" ></i><a href="{{ .Permalink }}">
     <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "nowon.html" . -}}
   	</li>
@@ -20,7 +20,7 @@
     {{- $classend := (time .Params.enddate).Unix -}}
     {{- if (ge now.Unix $classend ) -}}
       {{- if (le now.Unix (add $classend 10368000)) }}
-      	<li><i class="fa-li fa fa-mortar-board fa-fw teaching-item"></i><a href="{{ .Permalink }}">
+      	<li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item"></i><a href="{{ .Permalink }}">
         <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
       	<span class="badge badge-small">completed</span>
       	</li>

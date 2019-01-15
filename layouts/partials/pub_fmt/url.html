@@ -1,7 +1,7 @@
 {{- $ := .dot -}}
 {{- if isset $.Params "pub_url" }}
     <a href="{{ $.Params.pub_url | safeHTML }}" target="_blank" class="badge badge-small url">
-    {{ if true -}}<i class="fa fa-globe"></i> {{ end -}}
+    {{ if true -}}<i class="{{partial "fa_icon" (dict "Site" $.Site "pro_weight" "l" "weight" "s" "icon" "globe")}}"></i> {{ end -}}
     WWW</a>
       {{- if eq .nomicrodata 0 }}
         <meta itemprop="sameAs" content="{{ $.Params.pub_url | safeHTML }}"/>

@@ -5,5 +5,5 @@
 {{- end -}}
 {{ partial "site_templates/research_overview.html" . }}
 <p style="padding-top:1.5ex;"><em><strong>Curriculum Vitae</strong></em>
-<a href="/files/cv/{{ $.Scratch.Get "cv" }}" target="_blank" class="badge badge-small pdf"><i class="fa fa-file-pdf-o"></i>&nbsp;PDF</a></p>
+<a href="/files/cv/{{ $.Scratch.Get "cv" }}" target="_blank" class="badge badge-small pdf"><i class="{{partial "fa_icon" (dict "Site" .Site "pro_weight" "l" "weight" "r" "icon" "file-pdf")}}"></i>&nbsp;PDF</a></p>
 <br/>

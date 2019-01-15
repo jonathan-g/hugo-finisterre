@@ -36,7 +36,7 @@
 	<!-- The title bar is used for small sizes.  -->
 	  <div class="title-bar" data-responsive-toggle="site-menu" data-hide-for="medium">
 	    <button class="site-hamburger" type="button" data-toggle>
-	      <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+	      <i class="{{partial "fa_icon" (dict "Site" $.Site "pro_weight" "r" "weight" "s" "icon" "bars")}} fa-lg" aria-hidden="true"></i>
 	    </button>
 	    <div class="title-bar-title site-title">
 	      <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>

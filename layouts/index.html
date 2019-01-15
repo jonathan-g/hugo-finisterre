@@ -52,7 +52,11 @@
       {{- $.Scratch.Set "post_items" nil -}}
     {{- end -}}
     {{ range first $news_post_count (sort (sort (union ($.Scratch.Get "news_items") ($.Scratch.Get "post_items")) "Weight") "Date" "desc" ) }}
-      <li><i class="fa-li fa {{if eq .Type "news" }}fa-newspaper-o{{ else }}fa-pencil-square-o{{ end }}"></i>
+      <li><i class="fa-li {{ if eq .Type "news" -}}
+        {{- partial "fa_icon" (dict "Site" .Site "pro_weight" "l" "weight" "r" "icon" "newspaper") -}}
+      {{- else -}}
+        {{- partial "fa_icon" (dict "Site" .Site "pro_weight" "l" "weight" "s" "icon" "pencil-alt") -}}
+      {{- end }}"></i>
       <article itemscope itemtype="http://schema.org/{{ if eq .Type "news" }}NewsArticle{{ else }}BlogPosting{{ end }}" >
       <span itemprop="name headline">{{ .Title }}</span>
       {{ if gt $news_post_count 2 -}}

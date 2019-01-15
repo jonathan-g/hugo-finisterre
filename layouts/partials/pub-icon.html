@@ -1,7 +1,24 @@
-{{- $pub_status_icon := (dict "unpublished" "file-text-o") -}}
-{{- $pub_type_icon := (dict "book" "book" "patent" "flask" "article" "file-text") -}}
-{{- $pub_default_icon := "file-text" -}}
+{{- $pub_status_icon := (dict "unpublished" "file") -}}
+{{- $pub_type_icon := (dict "book" "book" "patent" "flask" "article-journal" "file-alt" "chapter" "book-open" "thesis" "graduation-cap") -}}
+{{- $pub_default_icon := "file-alt" -}}
+
+{{- $pub_status_pro_icon := (dict "unpublished" "file") -}}
+{{- $pub_type_pro_icon := (dict "book" "book" "patent" "flask" "article-journal" "file-alt" "chapter" "book-open" "thesis" "graduation-cap") -}}
+{{- $pub_default_pro_icon := "file-alt" -}}
+
+{{- $pub_status_weight := (dict "unpublished" "r") -}}
+{{- $pub_type_weight := (dict "book" "s" "patent" "s" "article-journal" "s" "paper-conference" "s" "chapter" "s" "thesis" "s") -}}
+{{- $pub_default_weight := "r" -}}
+
+{{- $pub_status_pro_weight := (dict "unpublished" "l") -}}
+{{- $pub_type_pro_weight := (dict "book" "s" "patent" "s" "article-journal" "s" "paper-conference" "s" "chapter" "s" "thesis" "s") -}}
+{{- $pub_default_pro_weight := "r" -}}
+
 {{- $pub_type := index .Params "pub_type" | default "" -}}
 {{- $pub_status := index .Params "pub_status" | default "" -}}
 {{- $pub_icon := (index $pub_status_icon $pub_status) | default (index $pub_type_icon $pub_type) | default $pub_default_icon -}}
-fa-{{ $pub_icon -}}
+{{- $pub_weight := (index $pub_status_weight $pub_status) | default (index $pub_type_weight $pub_type) | default $pub_default_weight -}}
+{{- $pub_pro_icon := (index $pub_status_pro_icon $pub_status) | default (index $pub_type_pro_icon $pub_type) | default $pub_default_pro_icon -}}
+{{- $pub_pro_weight := (index $pub_status_pro_weight $pub_status) | default (index $pub_type_pro_weight $pub_type) | default $pub_default_pro_weight -}}
+
+{{ partial "fa_icon" (dict "Site" $.Site "pro_weight" $pub_pro_weight "pro_icon" $pub_pro_icon "weight" $pub_weight "icon" $pub_icon) }}

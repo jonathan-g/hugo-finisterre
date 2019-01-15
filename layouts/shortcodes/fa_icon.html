@@ -1,0 +1,11 @@
+{{ $fa_pro := $.Site.Params.fontawesomePro }}
+fa{{- if and $fa_pro (.Get "pro_weight") -}}
+  {{- .Get "pro_weight" -}}
+{{- else -}}
+  {{- .Get "weight" -}}
+{{- end }}
+fa-{{- if  and $fa_pro (.Get "pro_icon") -}}
+  {{- .Get "pro_icon" -}}
+{{- else -}}
+  {{- .Get "icon" -}}
+{{- end }}

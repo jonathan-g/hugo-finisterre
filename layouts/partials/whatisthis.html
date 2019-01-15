@@ -22,7 +22,7 @@
     <div class="column small-12 medium-4">
       <h3 id="contact">Contact</h3>
       <ul class="fa-ul">
-  <li><i class="fa-li fa fa-university" style="padding-top:3px;"></i>
+  <li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "university")}}" style="padding-top:3px;"></i>
   {{- range $.Site.Params.address }}
     {{ . | safeHTML -}}
   {{ end }}
@@ -30,7 +30,7 @@
 	{{ range sort $.Site.Params.social "priority" -}}
 	<li>
   {{- if .icon -}}
-  <i class="{{- .icon_pack -}}-li {{ .icon_pack }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
+  <i class="{{- .icon_pack -}}-li {{ .icon_pack }}{{ .icon_weight }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
   {{- end -}}
   {{- if .site -}}{{.site}} {{ end -}}
   {{- if .link -}}
@@ -47,25 +47,23 @@
     <div class="column small-12 medium-3">
       <h3>Subscribe</h3>
       <p>To receive updates, you can subscribe to
-	the <a href="/index.xml"><i class="fa fa-rss-square"></i>&nbsp;RSS feed</a> of all
+	the <a href="/index.xml"><i class="{{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "rss-square")}}"></i>&nbsp;RSS feed</a> of all
 	updates to the site in an RSS feed reader.
       </p>
       <h3>Search</h3>
-      <a id="searchsite">
-	<form method="get" action="https://duckduckgo.com/">
-	  <label for="search-field" class="show-for-sr">Search with DuckDuckGo</label>
-	  <input type="search" name="q" maxlength="255" placeholder="Search with DuckDuckGo" id="search-field">
-	  <input type="hidden" name="sites" value="{{ .Site.BaseURL }}"/>
-	  <input type="hidden" name="k7" value="#faf8f8"/>
-	  <input type="hidden" name="kj" value="#b33"/>
-	  <input type="hidden" name="ky" value="#fafafa"/>
-	  <input type="hidden" name="kx" value="b"/>
-	  <input type="hidden" name="ko" value="-1"/>
-	  <input type="hidden" name="k1" value="-1"/>
-	  <input type="submit" value="DuckDuckGo Search" style="visibility: hidden;" />
-	</form>
-      </a>
-    </div>
+<script>
+  (function() {
+    var cx = '009716382101299651929:iafxtlak9m4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+</div>
   </div>
   </div>
 </footer>
