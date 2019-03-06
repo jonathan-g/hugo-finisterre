@@ -1,0 +1,6 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "author") | and (not (eq $.Params.author "")) -}}
+  {{- range $.Params.author -}}
+    <meta name="DC.contributor" content="{{ trim .family " " | htmlEscape }}, {{ trim .given " " | htmlEscape }}" scheme="editor">
+{{ end -}}
+{{- end -}}
