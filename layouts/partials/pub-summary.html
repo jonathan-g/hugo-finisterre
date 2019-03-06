@@ -1,5 +1,5 @@
 <i class="fa-li {{ partial "pub-icon" . | chomp}} pub-icon"></i>
-{{ partial "publication" (dict "dot" . "author_initials" 1 "editor_initials" 1 "bib_with_year" 0 "isbn" 0 "doi" 0 "pdf" 0 "amazon" 0 "preprint" 0 "ssrn" 0 "patent" 0 "in_press" 0 "meta_doi" 1 "meta_isbn" 1) | chomp }}
+{{ partial "publication" (dict "dot" . "author_initials" 1 "editor_initials" 1 "bib_with_year" 0 "isbn" 0 "doi" 0 "pdf" 0 "amazon" 0 "preprint" 0 "ssrn" 0 "patent" 0 "in_press" 0 "meta_doi" 1 "meta_isbn" 1 "cutoff" 3) | chomp }}
   <span><a href="{{ .Permalink }}" class="badge badge-small abstract-link">ABSTRACT</a>
   {{- partial "pub_fmt/doi" (dict "dot" . "doi" 1 "nomicrodata" 1) | chomp -}}
   {{- partial "pub_fmt/patent_link" (dict "dot" . "patent" 1) -}}

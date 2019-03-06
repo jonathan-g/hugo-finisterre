@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "report_number") | and (not (eq $.Params.report_number "")) -}}
+<meta name="citation_technical_report_number" content="{{ $.Params.report_number | htmlEscape }}">
+{{ end -}}

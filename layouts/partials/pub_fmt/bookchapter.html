@@ -1,7 +1,7 @@
 {{- $ := .dot -}}
 <article class="pub inline" itemscope itemtype="http://schema.org/ScholarlyArticle">
-{{ partial "pub_fmt/article_title" . -}}
 {{ partial "pub_fmt/authors" . | chomp }},
+{{ partial "pub_fmt/article_title" . -}}
 in
 {{ if isset $.Params "editor" -}}
   {{ partial "pub_fmt/editors" . -}},

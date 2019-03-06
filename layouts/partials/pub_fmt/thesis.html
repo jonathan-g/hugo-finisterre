@@ -1,7 +1,7 @@
 {{- $ := .dot -}}
 <article class="pub inline" itemscope itemtype="http://schema.org/CreativeWork">
-{{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
 {{ partial "pub_fmt/authors" . | chomp -}},
+{{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
 {{ partial "pub_fmt/thesis_type" . | chomp }}.
 {{ partial "pub_fmt/publisher" . | chomp -}}.
 {{- if gt .pdf 0 }}

@@ -1,7 +1,7 @@
 {{- $ := .dot -}}
 <article class="pub inline" itemscope itemtype="http://schema.org/Book">
-{{ partial "pub_fmt/book_title" . | markdownify | chomp -}},
-{{ partial "pub_fmt/authors" . | chomp -}}
+{{ partial "pub_fmt/authors" . | chomp -}},
+{{ partial "pub_fmt/book_title" . | markdownify | chomp -}}
 {{ partial "pub_fmt/publisher" . | chomp -}}.
 {{- if gt .amazon 0 }}
 {{ partial "pub_fmt/amazon" . -}}

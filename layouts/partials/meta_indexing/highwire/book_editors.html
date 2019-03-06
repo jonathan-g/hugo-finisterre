@@ -1,0 +1,6 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "editor") | and (not (eq $.Params.editor "")) -}}
+  {{- range $.Params.editor -}}
+    <meta name="citation_inbook_editor" content="{{ trim .family " " | htmlEscape }}, {{ trim .given " " | htmlEscape }}">
+{{ end -}}
+{{- end -}}

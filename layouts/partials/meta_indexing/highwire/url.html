@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "pub_url") | and (not (eq $.Params.pub_url "")) -}}
+<meta name="citation_abstract_html_url" content="{{ $.Params.pub_url | htmlEscape }}">
+{{ end -}}

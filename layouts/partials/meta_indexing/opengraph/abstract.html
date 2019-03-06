@@ -1,0 +1,6 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "abstract") | and (not (eq $.Params.abstract "")) -}}
+<meta name="og:description" content="{{ $.Params.abstract | markdownify | htmlEscape }}">
+{{ else -}}
+<meta name="og:description" content="{{ $.Page.Content | markdownify | htmlEscape }}">
+{{ end -}}

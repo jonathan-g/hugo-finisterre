@@ -1,0 +1,7 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "file") }}
+  {{- $file := index (where $.Params.file "desc" "full text") 1 -}}
+  {{- if (isset $file "file") -}}
+    <meta name="citation_pdf_url" content="{{ .Site.BaseURL }}/files/pubs/pdfs/{{ lower (index $file.file 1) }}">
+  {{ end -}}
+{{ end }}

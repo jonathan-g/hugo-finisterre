@@ -29,6 +29,9 @@
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/academicons.min.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/finisterre.css">
     <link rel="stylesheet" href="{{ .Site.BaseURL }}css/site.css">
+
+    {{ block "indexing-metadata" . }}
+    {{ end }}
   </head>
   <body itemscope itemtype="http://schema.org/WebPage" id="webpage">
     <header>

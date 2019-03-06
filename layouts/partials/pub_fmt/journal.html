@@ -1,2 +1,2 @@
 {{- $ := .dot -}}
-<i><span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">{{- $.Params.container_title | markdownify }}</span></span></i>
+<i><span itemprop="isPartOf" itemscope itemtype="http://schema.org/Periodical"><span itemprop="name">{{- $.Params.container_title | title | markdownify }}</span></span></i>

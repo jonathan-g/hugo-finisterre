@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "isbn") | and (not (eq $.Params.isbn "")) -}}
+<meta name="book:isbn" content="{{ $.Params.isbn | htmlEscape }}">
+{{ end -}}

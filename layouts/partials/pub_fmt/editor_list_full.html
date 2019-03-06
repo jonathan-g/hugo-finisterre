@@ -1,0 +1,8 @@
+{{- $ := .dot -}}
+{{- if gt .editor_initials 0 -}}
+  {{- $names := $.Params.short_editor -}}
+  {{- partial "pub_fmt/creator_list_full" (dict "names" $names "cutoff" -1 "name_type" "editor") -}}
+{{- else -}}
+  {{- $names := $.Params.editor -}}
+  {{- partial "pub_fmt/creator_list_full" (dict "names" $names "cutoff" -1 "name_type" "editor") -}}
+{{- end -}}

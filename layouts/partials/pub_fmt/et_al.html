@@ -2,7 +2,7 @@
 {{- $cutoff := .cutoff -}}
 {{- $name_type := .name_type -}}
 {{- $names := apply (apply $raw_names "partial" "pub_fmt/author" ".") "chomp" "." -}}
-{{- if gt (len $names) $cutoff -}}
+{{- if and (gt $cutoff 0) (gt (len $names) $cutoff) -}}
   <span itemprop="{{ $name_type }}">{{- index $names 0 }}</span> <i>et al</i>.
 {{- else -}}
   {{- $name_ct := len $names -}}

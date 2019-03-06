@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "publisher") | and (not (eq $.Params.publisher "")) -}}
+<meta name="citation_publisher" content="{{ $.Params.publisher | htmlEscape }}">
+{{ end -}}

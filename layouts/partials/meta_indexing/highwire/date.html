@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "pubdate") | and (not (eq $.Params.pubdate "")) -}}
+<meta name="citation_publication_date" content="{{ dateFormat "2006-01-02" $.Params.pubdate }}">
+{{ end -}}

@@ -1,0 +1,14 @@
+{{- $raw_names := .names -}}
+{{- $name_type := .name_type -}}
+{{- $names := apply (apply $raw_names "partial" "pub_fmt/author" ".") "chomp" "." -}}
+{{- $name_ct := len $names -}}
+{{- range $i, $n := $names -}}
+<span itemprop="{{ $name_type }}">{{ $n }}</span>
+{{- if lt $i (sub $name_ct 2) }},
+{{ else -}}
+  {{- if eq $i (sub $name_ct 2) -}}
+    {{- if gt $name_ct 2 }},{{ end }}
+    &amp;
+    {{ end -}}
+  {{- end }}
+{{- end -}}

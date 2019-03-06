@@ -1,0 +1,4 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "doi") | and (not (eq $.Params.doi "")) -}}
+<meta name="citation_doi" content="{{ $.Params.doi | htmlEscape }}">
+{{ end -}}

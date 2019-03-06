@@ -1,0 +1,8 @@
+{{- $ := .dot -}}
+{{- if (isset $.Params "pages") | and (not (eq $.Params.pages "")) -}}
+  {{- $page_range := split (replaceRE " *-+ *|, *| *&[mn]dash;? *| *&#821[12];? *" "-" $.Params.pages) "-" }}
+  {{- $first_page := first $page_range 1 -}}
+  {{- $last_page  := last $page_range 1 -}}
+  <meta name="citation_firstpage" content="$first_page | htmlEscape }}">
+  <meta name="citation_lastpage" content="$last_page | htmlEscape }}">
+{{ end -}}
