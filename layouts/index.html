@@ -97,7 +97,7 @@
       </nav>
     </footer>
   <hr/>
-  <h3>Recent {{ $teach_title }}</h3>
+  <h3>Recent &amp; upcoming {{ $teach_title }}</h3>
   <ul class="compact fa-ul">
     {{- $recent := first $teach_count (where (where .Data.Pages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse -}}
     {{- if gt $teach_count (len $recent) -}}
