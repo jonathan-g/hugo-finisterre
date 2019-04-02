@@ -99,7 +99,12 @@
   <hr/>
   <h3>Recent {{ $teach_title }}</h3>
   <ul class="compact fa-ul">
-    {{ range first $teach_count (where (where .Data.Pages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse }}
+    {{- $recent := first $teach_count (where (where .Data.Pages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse -}}
+    {{- if gt $teach_count (len $recent) -}}
+      {{- $nmore := sub $teach_count (len $recent) -}}
+      {{- $recent = append $recent (first $nmore (where (where (.Data.Pages.ByParam "last_enddate") "Section" "teaching").Reverse ".Date.Unix" ">=" (add now.Unix 7776000))) -}}
+    {{- end -}}
+    {{- range $recent }}
     <li>{{ partial "teach-summary" . }}</li>
     {{ end }}
   </ul>
