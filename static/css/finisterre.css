@@ -298,10 +298,6 @@ sup, sub {
   font-size:50%;
 }
 
-sup.pub-title {
-  vertical-align: top;
-}
-
  @media screen and (min-width: 40em) {
      h1 { font-size: 1.5rem; }
      h2 { font-size: 1.25rem; }
@@ -573,8 +569,29 @@ footer.footer {
 .pub-icon {
   color:#03396c;
   font-size:80%;
-  padding-top:6px;
+  padding-top:0.1rem;
 }
+
+sup.pub-title {
+  vertical-align: top;
+}
+
+.pub-title::before {
+  content: open-quote;
+}
+
+.pub-title::after {
+  content: close-quote;
+}
+
+.pub-book-title {
+  font-style: italic;
+}
+
+.pub-volume {
+  font-weight: bold;
+}
+
 
  /*************************************************
   *  Sharing
@@ -910,3 +927,4 @@ footer.footer {
 article.inline {
   display: inline;
 }
+
