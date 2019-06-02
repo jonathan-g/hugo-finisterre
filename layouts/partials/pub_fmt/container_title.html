@@ -1,2 +1,2 @@
 {{- $ := .dot -}}
-<i><span itemprop="isPartOf" itemscope itemtype="http://schema.org/Book"><span itemprop="name">{{ index $.Params "container_title" | title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup>$1</sup>" | safeHTML }}</span></span></i>
+<span class="pub-book-title" itemprop="isPartOf" itemscope itemtype="http://schema.org/Book"><span itemprop="name">{{ index $.Params "container_title" | title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup>$1</sup>" | safeHTML }}</span></span>

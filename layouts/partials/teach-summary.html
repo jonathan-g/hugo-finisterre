@@ -6,14 +6,21 @@
   	</li>
   {{- else -}}
   	<li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item"></i><a href="{{ .Permalink }}">
-    <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
-  	{{ partial "comingsoon.html" . }}
+    <span class="caps">{{ .Title }}</span></a>,
+    {{ if ge .Date.Unix (add now.Unix 15724800) -}}
+      {{- .Params.last_date | dateFormat "January" }}&ndash;{{ .Params.last_enddate | dateFormat "January 2006" -}}.
+      <span class="badge badge-small">completed</span>
+    {{- else -}}
+      {{- .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" -}}.
+    	{{ partial "comingsoon.html" . }}
+    {{- end -}}
   	</li>
   {{ end -}}
 {{- else -}}
   {{- if  le now.Unix (time .Params.enddate).Unix }}
   	<li><i class="fa-li fas {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "graduation-cap")}} teaching-item" ></i><a href="{{ .Permalink }}">
-    <span class="caps">{{ .Title }}</span></a>, {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
+    <span class="caps">{{ .Title }}</span></a>,
+    {{ .Date.Format "January" }}&ndash;{{ .Params.enddate | dateFormat "January 2006" }}.
   	{{ partial "nowon.html" . -}}
   	</li>
   {{ else -}}
