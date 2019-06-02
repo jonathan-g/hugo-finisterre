@@ -7,11 +7,13 @@
   </a></span>
   </span>
 </div>
-{{- if .Truncated }}
+{{- if or (isset .Params "summary") .Truncated }}
   {{ if isset .Params "abstract" -}}
-    {{ .Params.abstract | markdownify | safeHTML }}
+    {{- .Params.abstract | markdownify | safeHTML -}}
+  {{- else if isset .Params "summary" -}}
+    {{- .Summary -}}
   {{- else -}}
-    {{ .Summary | replaceRE "<p></p>" "" | chomp | safeHTML }}
+    {{- .Summary | replaceRE "<p></p>" "" | chomp | safeHTML -}}
   {{- end }}
   <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
 {{- else }}

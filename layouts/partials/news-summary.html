@@ -1,11 +1,14 @@
 <article itemscope itemtype="http://schema.org/NewsArticle">
 <h2><a href="{{ .RelPermalink }}"><span itemprop="name headline">{{ .Title }}</span></a></h2>
 {{ partial "news-metadata" . | chomp }}
-{{- if .Truncated }}
-  {{- if isset .Params "abstract" -}}
+{{- if or (isset .Params "summary") .Truncated }}
+  {{ if isset .Params "abstract" -}}
     {{- .Params.abstract | markdownify | safeHTML -}}
+  {{- else if isset .Params "summary" -}}
+    {{- .Summary -}}
   {{- else -}}
     {{- .Summary -}}
+    {{- /* .Summary | replaceRE "<p></p>" "" | chomp | safeHTML */ -}}
   {{- end }}
   <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
 {{- else }}
