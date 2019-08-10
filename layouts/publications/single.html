@@ -8,14 +8,14 @@
 {{ partial "whatisthis-short.html" . }}
 {{ end }}
 {{ define "indexing-metadata" }}
-{{ partial "publication-indexing-metadata" (dict "dot" . "author_initials" 0 "editor_initials" 0 "bib_with_year" 1 "pub_loc" 1 "isbn" 1 "doi" 1 "pdf" 1 "ssrn" 1 "preprint" 1 "patent" 1 "cutoff" -1) }}
+{{ partial "publication-indexing-metadata" (dict "dot" . "author_initials" 0 "editor_initials" 0 "bib_with_year" 1 "pub_loc" 1 "isbn" 1 "doi" 1 "pdf" 1 "alt_url" 1 "ssrn" 1 "preprint" 1 "patent" 1 "cutoff" -1) }}
 {{ end }}
 {{ define "main" }}
 <div class="row">
   <div class="column small-12 medium-10 medium-offset-1 end large-8 large-offset-0">
     <article class="pub" itemscope itemtype="http://schema.org/CreativeWork">
     <span style="font-size:120%;">
-    {{ partial "publication" (dict "dot" . "author_initials" 0 "editor_initials" 0 "bib_with_year" 1 "pub_loc" 0 "isbn" 1 "doi" 1 "pdf" 1 "in_press" 1 "ssrn" 1 "preprint" 1 "patent" 1 "meta_isbn" 0 "meta_doi" 0 "nomicrodata" 0 "cutoff" -1) }}
+    {{ partial "publication" (dict "dot" . "author_initials" 0 "editor_initials" 0 "bib_with_year" 1 "pub_loc" 0 "isbn" 1 "doi" 1 "pdf" 1 "alt_url" 1 "url" 0 "in_press" 1 "ssrn" 1 "preprint" 1 "patent" 1 "meta_isbn" 0 "meta_doi" 0 "nomicrodata" 0 "cutoff" -1) }}
     </span>
     <h4 style="padding-top:5px;"><b>Abstract:</b></h4>
     {{ .Content }}

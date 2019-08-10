@@ -13,7 +13,11 @@
 {{ partial "pub_fmt/amazon" . -}}
 {{- end }}
 {{- if gt .pdf 0 }}
-{{ partial "pub_fmt/pdf" . -}}
+  {{- if isset $.Params "file" -}}
+    {{ partial "pub_fmt/pdf" . -}}
+  {{- else if (and .alt_url (not .url) (isset $.Params "pub_url")) -}}
+    {{ partial "pub_fmt/url" . -}}
+  {{- end -}}
 {{- end }}
 {{- if gt .ssrn 0 }}
 {{ partial "pub_fmt/ssrn" . -}}
