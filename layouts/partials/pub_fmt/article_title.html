@@ -1,2 +1,2 @@
 {{- $ := .dot -}}
-<span class="pub-title" itemprop="name">{{- $.Params.title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup>$1</sup>" | safeHTML }},</span>
+<span class="pub-title" itemprop="name">{{- $.Params.title | markdownify | replaceRE "\\^([^\\^]+)\\^" "<sup>$1</sup>" | replaceRE "\u201c(.*)\u201d" "\u2018$1\u2019" | safeHTML }},</span>
