@@ -13,7 +13,7 @@
 {{- $news_post_count := index .Site.Params "news_post_count" | default 3}}
 {{- $news_current_months := index .Site.Params "news_current_months" | default 2 }}
 {{- if le $news_count 0 -}}
-  {{- $.Scratch.Set "news_count 0" -}}
+  {{- $.Scratch.Set "news_count" 0 -}}
 {{- else -}}
   {{- $.Scratch.Set "news_items" (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))).ByWeight -}}
   {{- if gt (len ($.Scratch.Get "news_items")) 0 -}}
