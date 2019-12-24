@@ -86,7 +86,7 @@
   <div class="column {{ $pub_teach_col_class }}">
     <h3>Recent {{ $pubs_title }}</h3>
     <ul class="compact fa-ul">
-      {{ range first $pubs_count (where .Data.Pages.ByDate "Section" "publications").Reverse -}}
+      {{ range first $pubs_count (where .Site.RegularPages.ByDate "Section" "publications").Reverse -}}
       <li>{{ partial "pub-summary" . }}</li>
       {{ end }}
     </ul>
@@ -99,10 +99,10 @@
   <hr/>
   <h3>Recent &amp; upcoming {{ $teach_title }}</h3>
   <ul class="compact fa-ul">
-    {{- $recent := first $teach_count (where (where .Data.Pages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse -}}
+    {{- $recent := first $teach_count (where (where .Site.RegularPages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse -}}
     {{- if gt $teach_count (len $recent) -}}
       {{- $nmore := sub $teach_count (len $recent) -}}
-      {{- $recent = $recent | append (first $nmore (where (where (.Data.Pages.ByParam "last_enddate") "Section" "teaching").Reverse ".Date.Unix" ">=" (add now.Unix 7776000))) -}}
+      {{- $recent = $recent | append (first $nmore (where (where (.Site.RegularPages.ByParam "last_enddate") "Section" "teaching").Reverse ".Date.Unix" ">=" (add now.Unix 7776000))) -}}
     {{- end -}}
     {{- range $recent }}
     <li>{{ partial "teach-summary" . }}</li>
