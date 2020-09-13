@@ -9,9 +9,12 @@
     {{- $female  = findRE "^female" $gender -}}
     {{- $trans   = findRE "^(trans|genderfluid|nonbinary)" $gender -}}
   {{- end -}}
-  {{- if $male   -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "mars" "as_list" true)}}"></i>{{ end }}
-  {{- if $female -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "venus" "as_list" true)}}"></i>{{ end }}
-  {{- if $trans  -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "transgender" "as_list" true)}}"></i>{{ end -}}
+  {{- if $male   -}}<i class="{{- if .as_list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "mars")       }}"></i> {{ end -}}
+  {{- if $female -}}<i class="{{- if .as_list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "venus")      }}"></i> {{ end -}}
+  {{- if $trans  -}}<i class="{{- if .as_list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "transgender")}}"></i> {{ end -}}
   <b>Pronouns:</b> {{ $.Site.Params.pronouns | markdownify }}
   {{- if .as_list }}</li>{{ end -}}
 {{- end }}

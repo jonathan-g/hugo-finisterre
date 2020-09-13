@@ -19,9 +19,12 @@
     {{- $female  = findRE "^female" $gender -}}
     {{- $trans   = findRE "^(trans|genderfluid|nonbinary)" $gender -}}
   {{- end -}}
-  {{- if $male -}}<i class="fa-li fas fa-mars" style="padding-opt:3px;"></i> {{ end -}}
-  {{- if $female -}}<i class="fa-li fas fa-venus" style="padding-opt:3px;"></i> {{ end -}}
-  {{- if $trans -}}<i class="fa-li fas fa-transgender" style="padding-opt:3px;"></i> {{ end -}}
+  {{- if $male   -}}<i class="{{- if $list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "mars")       }}"></i> {{ end -}}
+  {{- if $female -}}<i class="{{- if $list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "venus")      }}"></i> {{ end -}}
+  {{- if $trans  -}}<i class="{{- if $list -}}fa-li {{ end -}}
+    {{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "pro_weight" "r" "icon" "transgender")}}"></i> {{ end -}}
   <b>Pronouns:</b> {{ $.Site.Params.pronouns | markdownify }}
   {{- if $list }}</li>{{ end -}}
 {{- end }}
