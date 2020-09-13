@@ -1,0 +1,17 @@
+{{- if isset $.Site.Params "pronouns" -}}
+  {{- if .as_list }}<li>{{ end -}}
+    {{- $male   := false -}}
+    {{- $female := false -}}
+    {{- $trans  := false -}}
+  {{- if isset .Site.Params "gender" -}}
+    {{- $gender := trim (lower $.Site.Params.gender) " " -}}
+    {{- $male    = findRE "^male" $gender -}}
+    {{- $female  = findRE "^female" $gender -}}
+    {{- $trans   = findRE "^(trans|genderfluid|nonbinary)" $gender -}}
+  {{- end -}}
+  {{- if $male   -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "mars" "as_list" true)}}"></i>{{ end }}
+  {{- if $female -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "venus" "as_list" true)}}"></i>{{ end }}
+  {{- if $trans  -}}<i class="{{- if .as_list -}}fa-li {{ end -}}{{ partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "transgender" "as_list" true)}}"></i>{{ end -}}
+  <b>Pronouns:</b> {{ $.Site.Params.pronouns | markdownify }}
+  {{- if .as_list }}</li>{{ end -}}
+{{- end }}

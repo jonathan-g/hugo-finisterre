@@ -11,7 +11,7 @@
            {{ $.Site.Params.avatar -}}
          {{- else -}}
            avatar.jpg
-         {{- end -}}" alt="Portrait of the author"/>
+         {{- end -}}" alt="Portrait of {{ $.Site.Params.bioname | default "the author" }}."/>
         </figure>
         </span>
         <span>
@@ -22,6 +22,8 @@
     <div class="column small-12 medium-4">
       <h3 id="contact">Contact</h3>
       <ul class="fa-ul">
+  {{- $listpronouns := true -}}
+  {{- partial "pronouns.html" (dict "Site" $.Site "as_list" true) -}}
   <li><i class="fa-li {{partial "fa_icon" (dict "Site" $.Site "weight" "s" "icon" "university")}}" style="padding-top:3px;"></i>
   {{- range $.Site.Params.address }}
     {{ . | safeHTML -}}
