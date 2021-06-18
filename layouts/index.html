@@ -98,13 +98,15 @@
     </footer>
   <hr/>
   <h3>Recent &amp; upcoming {{ $teach_title }}</h3>
-  <ul class="compact fa-ul">
-    {{- $recent := first $teach_count (where (where .Site.RegularPages.ByDate "Section" "teaching") ".Date.Unix" "<=" (add now.Unix 7776000)).Reverse -}}
-    {{- if gt $teach_count (len $recent) -}}
-      {{- $nmore := sub $teach_count (len $recent) -}}
-      {{- $recent = $recent | append (first $nmore (where (where (.Site.RegularPages.ByParam "last_enddate") "Section" "teaching").Reverse ".Date.Unix" ">=" (add now.Unix 7776000))) -}}
+    {{- $teaching := where .Site.RegularPages.ByDate "Section" "teaching" }}
+    {{- $upcoming := (where (where $teaching ".Date" ">=" now) ".Date" "<=" (now.AddDate 0 0 90)).Reverse -}}
+    {{- $recent := where (sort ($teaching | complement $upcoming) ".Params.last_enddate").Reverse ".Params.last_enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
+    {{- if gt $teach_count (len $upcoming) -}}
+      {{- $nmore := sub $teach_count (len $upcoming) -}}
+      {{- $upcoming = $upcoming | append (first $nmore $recent) -}}
     {{- end -}}
-    {{- range $recent }}
+  <ul class="compact fa-ul">
+    {{- range $upcoming }}
     <li>{{ partial "teach-summary" . }}</li>
     {{ end -}}
   </ul>
