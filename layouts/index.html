@@ -99,14 +99,24 @@
   <hr/>
   <h3>Recent &amp; upcoming {{ $teach_title }}</h3>
     {{- $teaching := where .Site.RegularPages.ByDate "Section" "teaching" }}
-    {{- $upcoming := (where (where $teaching ".Date" ">=" now) ".Date" "<=" (now.AddDate 0 0 90)).Reverse -}}
-    {{- $recent := where (sort ($teaching | complement $upcoming) ".Params.last_enddate").Reverse ".Params.last_enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
-    {{- if gt $teach_count (len $upcoming) -}}
-      {{- $nmore := sub $teach_count (len $upcoming) -}}
-      {{- $upcoming = $upcoming | append (first $nmore $recent) -}}
+    {{- $current := where (where $teaching ".Date" "<=" now) ".Params.enddate" ">=" (dateFormat "2006-01-02" now) -}}
+    {{- if gt $teach_count (len $current) -}}
+      {{- $nmore := sub $teach_count (len $current) -}}
+      {{- $teaching = $teaching | complement $current -}}
+      {{- $upcoming := first $nmore (where (where $teaching ".Date" ">=" now) ".Date" "<=" (now.AddDate 0 0 90)).Reverse -}}
+      {{- $current = $current | append $upcoming -}}
+      {{- if gt $teach_count (len $current) -}}
+        {{- $nmore = sub $teach_count (len $current) -}}
+        {{- $teaching = $teaching | complement $upcoming -}}
+        {{- $recent := where (where (sort $teaching ".Params.last_enddate").Reverse ".Params.last_date" "<" (dateFormat "2006-01-02" now)) ".Params.last_enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
+        {{- $teaching = $teaching | complement $recent -}}
+        {{- $alt_recent := where (where $teaching.ByDate.Reverse ".Date" "<" now) ".Params.enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
+        {{- $recent = $recent | append $alt_recent -}}
+        {{- $current = $current | append (first $nmore $recent) -}}
+      {{- end -}}
     {{- end -}}
   <ul class="compact fa-ul">
-    {{- range $upcoming }}
+    {{- range $current }}
     <li>{{ partial "teach-summary" . }}</li>
     {{ end -}}
   </ul>
