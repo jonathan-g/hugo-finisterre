@@ -57,7 +57,11 @@
           <hr>
         <span style="font-family: Carlito;">
         {{ if .PrevInSection }}
-        <a href="{{.PrevInSection.RelPermalink}}"> &laquo;&nbsp;{{.PrevInSection.Title}}</a> {{ end }}{{ if .NextInSection }} | <a href="{{.NextInSection.RelPermalink}}">{{.NextInSection.Title}}&nbsp;&raquo; </a>
+        <a href="{{.PrevInSection.RelPermalink}}"> &laquo;&nbsp;{{.PrevInSection.Title}}</a>
+        {{ end }}
+        {{- if or .PrevInSection .NextInSection}} | {{ end }}
+        {{ if .NextInSection }}
+        <a href="{{.NextInSection.RelPermalink}}">{{.NextInSection.Title}}&nbsp;&raquo;</a>
         {{ end }}
         </span>
   </div>

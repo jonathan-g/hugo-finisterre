@@ -40,8 +40,8 @@
       <a href="{{.PrevInSection.Permalink}}"> &laquo; &nbsp;
         {{- .PrevInSection.Title | markdownify -}}
       </a>
-     {{ if .NextInSection }} | {{ end }}
    {{ end }}
+   {{- if or .PrevInSection .NextInSection}} | {{ end }}
    {{ if .NextInSection }}
      <a href="{{.NextInSection.Permalink}}">
      {{- .NextInSection.Title | markdownify -}}&nbsp;&raquo;</a>

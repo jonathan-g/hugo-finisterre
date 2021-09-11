@@ -46,10 +46,13 @@
 
     <ul class="pagination" role="navigation" aria-label="Pagination">
       {{ if .PrevInSection }}
-      <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}">&laquo; <em>Previous<span class="show-for-sr"> page</span></em>: {{ .PrevInSection.Title }}</a></li>
+      <li class="arrow" aria-disabled="true"><a href="{{.PrevInSection.Permalink}}">&laquo;
+      <em>Previous<span class="show-for-sr"> page</span></em>: {{ .PrevInSection.Title }}</a></li>
       {{ end }}
+      {{- if or .PrevInSection .NextInSection}} | {{ end }}
       {{ if .NextInSection }}
-      <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}"><em>Next<span class="show-for-sr"> page</span></em>: {{ .NextInSection.Title }}&nbsp;&raquo;</a></li>
+      <li class="arrow" aria-disabled="true"><a href="{{.NextInSection.Permalink}}"><em>Next<span class="show-for-sr">
+      page</span></em>: {{ .NextInSection.Title }}&nbsp;&raquo;</a></li>
       {{ end }}
     </ul>
 

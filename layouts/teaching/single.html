@@ -17,8 +17,8 @@
       <a href="{{.PrevInSection.Permalink}}"> &laquo; &nbsp;
         {{- .PrevInSection.Title -}}
       </a>
-     {{ if .NextInSection }} | {{ end }}
    {{ end }}
+   {{- if or .PrevInSection .NextInSection}} | {{ end }}
    {{ if .NextInSection }}
      <a href="{{.NextInSection.Permalink}}">
      {{- .NextInSection.Title -}}&nbsp;&raquo;</a>

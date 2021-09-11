@@ -28,8 +28,8 @@
     {{- else -}}
       {{- .PrevInSection.Title -}}
     {{- end -}}</a>
-     {{ if .NextInSection }} | {{ end }}
     {{ end }}
+    {{- if or .PrevInSection .NextInSection}} | {{ end }}
     {{ if .NextInSection }}
     <a href="{{.NextInSection.Permalink}}">
     {{- if isset .NextInSection.Params "short_title" -}}
