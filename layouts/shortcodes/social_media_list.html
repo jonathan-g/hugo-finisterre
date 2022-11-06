@@ -1,0 +1,20 @@
+{{ range where (sort $.Site.Params.social "priority") "social_media" true -}}
+  <li>
+  {{- if .icon -}}
+    <i class="{{- .icon_pack -}}-li {{ .icon_pack }}{{ .icon_weight }} {{ .icon_pack }}-{{ .icon -}}" style="padding-top:3px;"></i>
+  {{- end -}}
+  {{- if .site -}}{{.site}} {{ end -}}
+  {{- if .link -}}
+    <a {{ if .rel_me }}rel="me" {{ end -}} href="{{ .link }}">
+  {{- end -}}
+  {{- if .long_text -}}
+    {{- .long_text -}}
+  {{- else -}}
+    {{- .text -}}
+  {{- end -}}
+  {{- if .link -}}
+    </a>
+  {{- end -}}
+  {{ if .on_site }} on {{ .on_site }}{{ end -}}
+  </li>
+{{ end -}}
