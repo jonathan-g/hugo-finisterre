@@ -2,6 +2,6 @@
 {{- if (isset $.Params "file") }}
   <meta name="file-field" content="{{ $.Params.file }}">
   {{- range where $.Params.file "desc" "full text" }}
-    <meta name="citation_pdf_url" content="{{ $.Site.BaseURL }}/files/pubs/pdfs/{{ lower .file }}">
+    <meta name="citation_pdf_url" content="/files/pubs/pdfs/{{ lower .file }}">
   {{ end -}}
 {{ end }}

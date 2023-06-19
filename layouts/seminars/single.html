@@ -17,7 +17,7 @@
     <div class="unit-60">
     <article class="pub" itemscope itemtype="http://schema.org/CreativeWork">
       {{ if .Params.image }}
-      <img src="{{ $.Site.BaseURL }}img/{{ .Params.image }}" class="pub-banner" itemprop="image">
+      <img src="/img/{{ .Params.image }}" class="pub-banner" itemprop="image">
       {{end}}
       <div class="pub-info">
 	{{ if .Params.publication }}

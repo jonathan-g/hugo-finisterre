@@ -16,19 +16,19 @@
     {{ partial "typekit.html" . }}
     {{ partial "font-awesome-cdn.html" .}}
     <!-- -->
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/foundation.min.css">
+    <link rel="stylesheet" href="/css/foundation.min.css">
     <!--
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/foundation.css">
+    <link rel="stylesheet" href="/css/foundation.css">
     <!--
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/highlight.min.css">
+    <link rel="stylesheet" href="/css/highlight.min.css">
     <!-- -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/zenburn.min.css">
     <!--
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
     -->
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/academicons.min.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/finisterre.css">
-    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/site.css">
+    <link rel="stylesheet" href="/css/academicons.min.css">
+    <link rel="stylesheet" href="/css/finisterre.css">
+    <link rel="stylesheet" href="/css/site.css">
 
     {{ block "indexing-metadata" . }}
     {{ end }}
@@ -42,7 +42,7 @@
 	      <i class="{{partial "fa_icon" (dict "Site" $.Site "pro_weight" "r" "weight" "s" "icon" "bars")}} fa-lg" aria-hidden="true"></i>
 	    </button>
 	    <div class="title-bar-title site-title">
-	      <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+	      <a href="/">{{ .Site.Title }}</a>
 	    </div>
 	    <div class="title-bar-right pull-right">
 	      {{ block "title-bar-right" . }}
@@ -53,7 +53,7 @@
 	  <!-- The top bar is used for medium and up.  -->
 	    <div class="top-bar" id="site-menu" >
 	      <div class="top-bar-title show-for-medium site-title">
-		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+		<a href="/">{{ .Site.Title }}</a>
 	      </div>
 	      <div class="top-bar-left">
 		<ul class="menu vertical medium-horizontal">
