@@ -14,7 +14,9 @@
     {{ if gt now.Year .Site.Params.copyright.year -}}
       &ndash;{{ now.Format "2006" -}}
     {{ end -}}
-  {{ end -}}.
+  {{- else -}}
+    &nbsp;{{ now.Format "2006" -}}
+  {{- end -}}.
 {{- end -}}
 &nbsp;
 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="/img/cc-by.svg" alt="Creative Commons Attribution 4.0 International License" style="border-width:0;vertical-align:middle"/></a>
