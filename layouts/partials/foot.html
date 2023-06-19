@@ -3,7 +3,19 @@
 <a href="https://foundation.zurb.com/">Foundation</a>, using the
 <a href="https://github.com/jonathan-g/hugo-finisterre">Finisterre</a> theme.
 &nbsp;
-&copy; Jonathan Gilligan 2017{{ if gt now.Year 2017 }}&ndash;{{ now.Format "2006" }}{{ end }}.
+{{- if isset .Site.Params "copyright" -}}
+&copy; {{ if isset .Site.Params.copyright "name" -}}
+      {{.Site.Params.copyright.name}}
+    {{- else -}}
+      {{.Site.Params.AuthorName}}
+    {{- end -}}
+  {{- if isset .Site.Params.copyright "year" -}}
+    &nbsp; {{ .Site.Params.copyright.year -}}
+    {{ if gt now.Year .Site.Params.copyright.year -}}
+      &ndash;{{ now.Format "2006" -}}
+    {{ end -}}
+  {{ end -}}.
+{{- end -}}
 &nbsp;
 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="/img/cc-by.svg" alt="Creative Commons Attribution 4.0 International License" style="border-width:0;vertical-align:middle"/></a>
 {{- if isset .Site.Params "repository" }}
