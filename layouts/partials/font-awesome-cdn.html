@@ -1,5 +1,13 @@
 <!-- load font-awesome from CDN -->
-<!--
-<script src="https://use.fontawesome.com/{{ $.Site.Params.fontawesomeCode }}.js"></script>
--->
-<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="{{ $.Site.Params.fontawesomeCode }}" crossorigin="anonymous">
+{{ if .Site.Params.fontAwesomePro -}}
+  {{ if isset .Site.Params.fontAwesomePro "kit" -}}
+  <script src="https://kit.fontawesome.com/{{ .Site.Params.fontAwesomePro.kit | safeURL }}.js" crossorigin="anonymous"></script>
+  <!--
+  <link rel="stylesheet" href="https://kit.fontawesome.com/{{ .Site.Params.fontAwesomePro.kit | safeURL }}.css" crossorigin="anonymous">
+  -->
+  {{ else if isset .Site.Params.fontAwesomePro "key" -}}
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" integrity="{{ $.Site.Params.fontawesome.key | safeHTMLAttr }}" crossorigin="anonymous">
+  {{ end -}}
+{{- else -}}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+{{- end }}
