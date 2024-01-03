@@ -1,5 +1,12 @@
 {{- $ := .dot -}}
-{{- if isset $.Params "date" }}
-{{- $pub_time := (time $.Params.date) -}}
-{{- if ge $pub_time.Unix now.Unix }} <span class="badge badge-small in-press">in press</span>{{ end -}}
+{{- $inpress := false -}}
+{{- if isset $.Params "status" -}}
+  {{- $inpress = in (slice "inpress" "in press") $.Params.status -}}
 {{- end -}}
+{{- if isset $.Params "date" }}
+  {{- $pub_time := (time $.Params.date) -}}
+  {{- if ge $pub_time.Unix now.Unix -}}
+    {{- $inpress = true -}}
+  {{- end -}}
+{{- end -}}
+{{- if $inpress}} <span class="badge badge-small in-press">in press</span>{{ end -}}
