@@ -924,7 +924,43 @@ sup.pub-title {
     color: #808080;
   }
 
+  div.image-caption,
+  .image-caption p {
+    text-align: left;
+    line-height:1;
+    margin-top:0;
+    padding:0;
+    padding-left:1em;
+    padding-right:1em;
+  }
+
+  .image-caption div,
+  .image-caption p,
+  .image-caption span {
+    font-size:80%;
+    font-style:italic;
+    color: #303030;
+  }
+
 article.inline {
   display: inline;
+}
+
+figure {
+  text-align:center;
+  margin-top:1em;
+  margin-bottom:1em;
+  margin-left:1em;
+  margin-right:1em;
+}
+
+figcaption {
+  text-align:left;
+  font-size:90%;
+  font-style:italic;
+}
+
+figcaption h4 {
+  fontsize:100%;
 }
 

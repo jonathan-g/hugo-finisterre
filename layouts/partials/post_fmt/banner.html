@@ -10,6 +10,9 @@
     {{ else }}
     {{ end -}}
   {{ end -}}
+  {{- if ne (index $.Params.banner "caption") nil -}}
+  <div class="image-caption"><span class="image-caption">{{ $.Params.banner.caption | markdownify }}</span></div>
+  {{ end -}}
   {{- if ne (index $.Params.banner "credit") nil -}}
   <div class="image-credit"><span class="image-credit">{{ $.Params.banner.credit | markdownify }}</span></div>
   {{ end -}}
