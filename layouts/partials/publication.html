@@ -11,5 +11,6 @@
 {{- else if eq $.Params.pub_type "patent" }}{{ partial "pub_fmt/patent" . -}}
 {{- else if eq $.Params.pub_type "report" }}{{ partial "pub_fmt/report" . -}}
 {{- else if eq $.Params.pub_type "thesis" }}{{ partial "pub_fmt/thesis" . -}}
+{{- else if eq $.Params.pub_type "preprint" }}{{ partial "pub_fmt/preprint" -}}
 {{- end -}}
 {{- if gt .in_press 0 }}{{ partial "pub_fmt/inpress" . }}{{ end -}}
