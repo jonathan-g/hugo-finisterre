@@ -1,0 +1,150 @@
+{{ define "main" }}
+{{- $front_page_img := index .Site.Params "front_page_img" | default "avatar.jpg" -}}
+{{- $posts_title := index .Site.Params "posts_title" | default "Posts" -}}
+{{- $posts_count := index .Site.Params "posts_count" | default 2 -}}
+{{- $pubs_title  := index .Site.Params "pubs_title"  | default "Publications" -}}
+{{- $pubs_count  := index .Site.Params "pubs_count"  | default 3 -}}
+{{- $teach_title := index .Site.Params "teach_title" | default "Teaching" -}}
+{{- $teach_count := index .Site.Params "teach_count" | default 3 -}}
+{{- $news_title  := index .Site.Params "news_title"  | default "News Coverage" -}}
+{{- $news_count  := index .Site.Params "news_count"  | default 3 -}}
+{{- $post_title  := index .Site.Params "post_title"  | default "Blog Posts" -}}
+{{- $post_count  := index .Site.Params "post_count"  | default 3 -}}
+{{- $news_post_count := index .Site.Params "news_post_count" | default 3}}
+{{- $news_current_months := index .Site.Params "news_current_months" | default 2 }}
+{{- if le $news_count 0 -}}
+  {{- $.Scratch.Set "news_count" 0 -}}
+{{- else -}}
+  {{- $.Scratch.Set "news_items" (where (where (where $.Site.Pages.ByDate "Section" "news") "Params.publication" "!=" nil).Reverse ".Date.Unix" "ge" (sub now.Unix (mul $news_current_months 2592000))).ByWeight -}}
+  {{- if gt (len ($.Scratch.Get "news_items")) 0 -}}
+    {{- $.Scratch.Set "news_items" (first $news_count ($.Scratch.Get "news_items")) -}}
+    {{- $.Scratch.Set "news_current_count" (len ($.Scratch.Get "news_items")) -}}
+  {{- else -}}
+    {{- $.Scratch.Set "news_items" nil -}}
+    {{- $.Scratch.Set "news_current_count" 0 -}}
+  {{- end -}}
+{{- end -}}
+{{- $news_current_count := ($.Scratch.Get "news_current_count") -}}
+{{- if and (gt $news_current_count 0) (gt $post_count 0) -}}
+  {{- $.Scratch.Set "news_post_title" (delimit (slice $post_title "and" $news_title) " ") -}}
+{{- else -}}
+  {{- if gt $news_current_count 0 -}}
+     {{- $.Scratch.Set "news_post_title" $news_title -}}
+  {{- else -}}
+     {{- $.Scratch.Set "news_post_title" $post_title -}}
+  {{- end -}}
+{{- end -}}
+{{- $news_post_title := $.Scratch.Get "news_post_title" -}}
+{{- if or (gt $news_current_count 0) (gt $post_count 0) -}}
+  {{- $.Scratch.Set "pub_teach_col_class" "small-12 medium-5 large-6" -}}
+{{- else -}}
+  {{- $.Scratch.Set "pub_teach_col_class" "small-12 medium-6" -}}
+{{- end -}}
+{{- $pub_teach_col_class := ($.Scratch.Get "pub_teach_col_class") -}}
+<div class="row" id="whats-new">
+{{- if or (gt $news_current_count 0) (gt $post_count 0) -}}
+    <div class="column small-12 medium-7 large-6">
+    <h3>Recent {{ $news_post_title }}</h3>
+    <ul class="compact fa-ul">
+    {{- if gt $post_count 0 -}}
+      {{- $.Scratch.Set "post_items" (first $post_count (where (where $.Site.Pages.ByWeight.ByDate "Section" "post") "Params.title" "!=" nil).Reverse)}}
+    {{- else -}}
+      {{- $.Scratch.Set "post_items" nil -}}
+    {{- end -}}
+    {{ range first $news_post_count (sort (sort (union ($.Scratch.Get "news_items") ($.Scratch.Get "post_items")) "Weight") "Date" "desc" ) }}
+      <li><i class="fa-li {{ if eq .Type "news" -}}
+        {{- partial "fa_icon" (dict "Site" .Site "pro_weight" "l" "weight" "r" "icon" "newspaper") -}}
+      {{- else -}}
+        {{- partial "fa_icon" (dict "Site" .Site "pro_weight" "l" "weight" "s" "icon" "pencil-alt") -}}
+      {{- end }}"></i>
+      <article itemscope itemtype="http://schema.org/{{ if eq .Type "news" }}NewsArticle{{ else }}BlogPosting{{ end }}" >
+      <span itemprop="name headline">{{ .Title }}</span>
+      {{ if gt $news_post_count 2 -}}
+      {{- if eq .Type "news" }}{{ partial "news-capsule" . }}{{ else }}{{ partial "post-capsule" . }}{{ end -}}
+      {{- else -}}
+      {{- if eq .Type "news" }}{{ partial "news-capsule-long" . }}{{ else }}{{ partial "post-capsule-long" . }}{{ end -}}
+      {{- end -}}
+      </article>
+      </li>
+    {{ end -}}
+    </ul>
+    <footer>
+      <nav>
+      <ul class="menu align-right">
+        <li><a href="/news/" class="nav-bar more">&rarr; more  {{ $news_title }}</a></li>
+        <li><a href="/post/" class="nav-bar more">&rarr; more  {{ $post_title }}</a></li>
+      </ul>
+      </nav>
+    </footer>
+    </div>
+    <div class="show-for-small-only"><hr/></div>
+  {{- else -}}
+  <div class="column small-12 medium-7 large-5">
+  <img src="img/{{ $front_page_img }}"/>
+  </div>
+  {{- end -}}
+  <div class="column {{ $pub_teach_col_class }}">
+    <h3>Recent {{ $pubs_title }}</h3>
+    <ul class="compact fa-ul">
+      {{ range first $pubs_count (where .Site.RegularPages.ByDate "Section" "publications").Reverse -}}
+      <li>{{ partial "pub-summary" . }}</li>
+      {{ end }}
+    </ul>
+    <footer>
+      <nav>
+      <ul class="menu align-right">
+	      <li><a href="/publications/" class="nav-bar more">&rarr; more  {{ $pubs_title }}</a>
+      </nav>
+    </footer>
+  <hr/>
+  <h3>Recent &amp; upcoming {{ $teach_title }}</h3>
+    {{- $teaching := where .Site.RegularPages.ByDate "Section" "teaching" }}
+    {{- $current := where (where $teaching ".Date" "<=" now) ".Params.enddate" ">=" (dateFormat "2006-01-02" now) -}}
+    {{- if gt $teach_count (len $current) -}}
+      {{- $nmore := sub $teach_count (len $current) -}}
+      {{- $teaching = $teaching | complement $current -}}
+      {{- $upcoming := first $nmore (where (where $teaching ".Date" ">=" now) ".Date" "<=" (now.AddDate 0 0 90)).Reverse -}}
+      {{- $current = $current | append $upcoming -}}
+      {{- if gt $teach_count (len $current) -}}
+        {{- $nmore = sub $teach_count (len $current) -}}
+        {{- $teaching = $teaching | complement $upcoming -}}
+        {{- $recent := where (where (sort $teaching ".Params.last_enddate").Reverse ".Params.last_date" "<" (dateFormat "2006-01-02" now)) ".Params.last_enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
+        {{- $teaching = $teaching | complement $recent -}}
+        {{- $alt_recent := where (where $teaching.ByDate.Reverse ".Date" "<" now) ".Params.enddate" ">=" (dateFormat "2006-01-02" (now.AddDate 0 0 -90)) -}}
+        {{- $recent = $recent | append $alt_recent -}}
+        {{- $current = $current | append (first $nmore $recent) -}}
+      {{- end -}}
+    {{- end -}}
+  <ul class="compact fa-ul">
+    {{- range $current }}
+    <li>{{ partial "teach-summary" . }}</li>
+    {{ end -}}
+  </ul>
+  <footer>
+    <nav>
+    <ul class="menu align-right">
+      <li><a href="/teaching/" class="nav-bar more">&rarr; more  {{ $teach_title }}</a>
+    </nav>
+  </footer>
+
+</div>
+{{ end }}
+{{ define "pagescripts" }}
+    <script type="text/javascript" >
+    function arrange_rows(event, newSize, oldSize) {
+      var whats_new = $("#whats-new");
+      var basic_info = $("#basic-info");
+      if (!Foundation.MediaQuery.atLeast("medium")) {
+        rowx = whats_new.detach();
+        rowx.insertAfter(basic_info);
+      } else {
+        rowx = basic_info.detach();
+        rowx.insertAfter(whats_new);
+      }
+    };
+
+    arrange_rows();
+
+    $(window).on('changed.zf.mediaquery', arrange_rows);
+    </script>
+{{ end }}
