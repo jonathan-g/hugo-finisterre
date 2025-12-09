@@ -1,0 +1,5 @@
+{{- $col := default (default "black" $.Site.Params.box_style_defaults.color) (.Get "color") -}}
+{{- $bkg := default (default "#ffffc0" $.Site.Params.box_style_defaults.background) (.Get "background") -}}
+{{- $border := default (default "1px solid black" .Site.Params.box_style_defaults.border) (.Get "border") -}}
+{{- $pad := default (default "1rem" .Site.Params.box_style_defaults.padding) (.Get "padding") -}}
+{{ partial "box" (dict "dot" . "col" $col "bkg" $bkg "border" $border "pad" $pad "Inner" .Inner) }}

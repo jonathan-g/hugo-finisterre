@@ -1,0 +1,14 @@
+{{- $col := default (default "black" site.Params.box_style_defaults.color) .col -}}
+{{- $bkg := default (default "#ffffc0" site.Params.box_style_defaults.background) .bkg -}}
+{{- $border := default (default "3px solid black" site.Params.box_style_defaults.border) .border -}}
+{{- $pad := default (default "0.5rem" site.Params.box_style_defaults.padding) .pad -}}
+{{- $style := (printf "color:%s;background-color:%s;border:%s;padding:%s;"
+                      $col $bkg $border $pad) -}}
+
+<div
+  {{- if (not (eq $style nil)) -}}
+    {{- (printf " style=\"%s\" " $style) | safeHTMLAttr -}}
+  {{- end -}}
+  >
+{{ .Inner }}
+</div>
